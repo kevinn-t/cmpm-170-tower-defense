@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://daa10ieakewou"]
+[gd_scene load_steps=7 format=3 uid="uid://daa10ieakewou"]
 
 [ext_resource type="PackedScene" uid="uid://xuoh0gxe3ly5" path="res://Prefabs/city_center.tscn" id="1_0afw7"]
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
 [ext_resource type="PackedScene" uid="uid://bjuiop2xqasns" path="res://Prefabs/launcher.tscn" id="3_sgb2t"]
 [ext_resource type="PackedScene" uid="uid://dml41df75scnh" path="res://Prefabs/ship_depot.tscn" id="4_aqyhw"]
 [ext_resource type="Script" uid="uid://cd68pk6fgqmb0" path="res://ore_transport.gd" id="5_ux2rm"]
+[ext_resource type="Script" uid="uid://l6kpnfpk0r4" path="res://game_manager.gd" id="6_sgb2t"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,3 +19,7 @@
 
 [node name="Ship" type="Node2D" parent="."]
 script = ExtResource("5_ux2rm")
+
+[node name="Game Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_sgb2t")
