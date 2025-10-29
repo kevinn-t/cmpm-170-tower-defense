@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dml41df75scnh"]
+
+[ext_resource type="Script" uid="uid://cao6f1elr876n" path="res://Scripts/ship_depot.gd" id="1_ierel"]
+
+[node name="Ship Depot" type="Node2D"]
+script = ExtResource("1_ierel")
