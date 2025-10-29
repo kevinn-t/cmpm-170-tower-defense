@@ -1,12 +1,13 @@
 # cmpm-170-tower-defense
 ### TASKS & TODO: 
 - [ ] Art - Top Down 2D
-	- [ ] ship
-	- [ ] city
-	- [ ] drill
-	- [ ] launchpad
-	- [ ] ship point
-	- [ ] find lunar tileset
+	- [x] ship
+	- [x] city
+	- [x] drill
+	- [x] launchpad
+	- [x] ship point
+	- [x] make lunar tileset
+	- [x] container
 - [ ] Programming
 	- [ ] UI
 	- [ ] behavior
@@ -25,4 +26,7 @@
 		- [ ] drills need +1 people to operate
 		- [ ] upgradable city using money to make people
 		
-		
+Generic building needs:
+* workers needed, working and max
+* health
+* 

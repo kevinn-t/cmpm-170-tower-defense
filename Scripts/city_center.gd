@@ -1,11 +1,10 @@
 extends Node2D
 
-@export var money: int = 100
-@export var total_population: int = 10
-@export var residing_population: int = 10
-	
-func assign_personel() -> void:
-	residing_population -= 1
+var game_manager : Node
+
+func _ready() -> void:
+	game_manager = get_node("%Game Manager")
 
 func upgrade() -> void:
-	total_population += 5
+	game_manager.total_population += 5
+	game_manager.unemployed_population += 5

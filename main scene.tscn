@@ -64,3 +64,6 @@ tile_set = SubResource("TileSet_18xev")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-250, 223)
 zoom = Vector2(2.11, 2.11)
+[node name="Game Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_sgb2t")
