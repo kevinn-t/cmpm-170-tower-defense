@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://xuoh0gxe3ly5"]
+[gd_scene load_steps=4 format=3 uid="uid://xuoh0gxe3ly5"]
 
 [ext_resource type="Script" uid="uid://cv4vjo7eae6sj" path="res://Scripts/city_center.gd" id="1_8neen"]
 [ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="2_ai34k"]
@@ -7,18 +7,12 @@
 atlas = ExtResource("2_ai34k")
 region = Rect2(32, 32, 64, 64)
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ai34k"]
-points = PackedVector2Array(32, 0, 0, -16, -32, 0, 0, 16)
-
 [node name="City Center" type="StaticBody2D"]
 script = ExtResource("1_8neen")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = SubResource("AtlasTexture_33jod")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("ConvexPolygonShape2D_ai34k")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(32, 0, 0, -16, -32, 0, 0, 16)
