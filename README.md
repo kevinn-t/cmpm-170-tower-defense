@@ -13,7 +13,7 @@
 	- [ ] Resource transport Ships
 		- [ ] behavior tree
 		- [ ] pathfinding 
-	- [ ] Towers
+	- [ ] Buildings
 		- [ ] health system
 		- [ ] grid placement
 		- [ ] view info (how many humans inside)

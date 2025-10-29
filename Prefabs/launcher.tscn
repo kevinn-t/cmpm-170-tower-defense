@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjuiop2xqasns"]
+
+[ext_resource type="Script" uid="uid://d2duts7q2fvf4" path="res://Scripts/ore_launcher.gd" id="1_4emaf"]
+
+[node name="Launcher" type="Node2D"]
+script = ExtResource("1_4emaf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
