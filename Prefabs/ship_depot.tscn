@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dml41df75scnh"]
+[gd_scene load_steps=4 format=3 uid="uid://dml41df75scnh"]
 
 [ext_resource type="Script" uid="uid://cao6f1elr876n" path="res://Scripts/ship_depot.gd" id="1_ierel"]
+[ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="2_qpmyw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaqhv"]
+atlas = ExtResource("2_qpmyw")
+region = Rect2(96, 32, 32, 32)
 
 [node name="Ship Depot" type="Node2D"]
 script = ExtResource("1_ierel")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = SubResource("AtlasTexture_oaqhv")
