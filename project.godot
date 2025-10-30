@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[global_group]
+
+ship_depot=""
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
