@@ -11,4 +11,6 @@ radius = 6.0
 texture = ExtResource("1_gc2lj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_4rud1")
+disabled = true

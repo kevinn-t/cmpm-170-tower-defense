@@ -30,3 +30,6 @@ Generic building needs:
 * workers needed, working and max
 * health
 * 
+
+
+Start with 1 city, 1 tower, 1 drill, 1 ship, drill -> ship -> tower, start with launchpad

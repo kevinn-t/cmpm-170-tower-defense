@@ -8,3 +8,9 @@ extends Node
 func assign_workers(amount: int) -> void:
 	if (unemployed_population - amount > 0):
 		unemployed_population -= amount
+@onready var ground_layer: TileMapLayer = $"../GroundLayer"
+
+func _ready() -> void:
+	ground_layer.global_position = Vector2.ZERO;
+	var pos = Vector2.ONE
+	var snapped = ground_layer.map_to_local(ground_layer.local_to_map(pos))

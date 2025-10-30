@@ -18,3 +18,8 @@ texture = ExtResource("2_88h6h")
 visible = false
 shape = SubResource("CircleShape2D_88h6h")
 disabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 10.0
