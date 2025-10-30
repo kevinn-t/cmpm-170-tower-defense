@@ -19,4 +19,6 @@ position = Vector2(0, -8)
 texture = SubResource("AtlasTexture_u1ru3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(32, 0, 0, -16, -32, 0, 0, 16)
+disabled = true

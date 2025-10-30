@@ -9,8 +9,10 @@ region = Rect2(0, 26, 32, 32)
 [node name="Habitat" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(0, -6)
 texture = SubResource("AtlasTexture_18xev")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
+disabled = true
