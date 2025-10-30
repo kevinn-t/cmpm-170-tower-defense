@@ -1,4 +1,4 @@
-extends Node2D
+extends Building
 
 @export var ore_per_second: int = 1
 @export var workers: int = 0

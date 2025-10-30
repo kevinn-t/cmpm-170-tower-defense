@@ -1,4 +1,4 @@
-extends Node2D
+extends Building
 
 var game_manager : Node
 

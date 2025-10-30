@@ -1,4 +1,4 @@
-extends Node2D
+extends Building
 
 # how much ore/sec this would pull from adjacent ore producers
 @export var ore_pull_speed : int 

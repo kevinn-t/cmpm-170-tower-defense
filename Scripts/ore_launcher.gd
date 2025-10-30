@@ -1,4 +1,4 @@
-extends Node2D
+extends Building
 
 @export var money_per_ore : int = 1
 @export var cooldown_time : float = 5
