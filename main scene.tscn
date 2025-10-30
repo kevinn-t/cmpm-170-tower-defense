@@ -66,6 +66,7 @@ visible = false
 navigation_polygon = SubResource("NavigationPolygon_neqfu")
 
 [node name="City Center" parent="." instance=ExtResource("1_0afw7")]
+unique_name_in_owner = true
 y_sort_enabled = true
 position = Vector2(-48, -18)
 
@@ -90,7 +91,7 @@ tile_map_data = PackedByteArray("AAD9//j/AQAEAAAAAAD9//n/AQAEAAAAAAD9//r/AQAEAAA
 tile_set = SubResource("TileSet_18xev")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-250, 223)
+position = Vector2(14, -4)
 zoom = Vector2(2.11, 2.11)
 
 [node name="Game Manager" type="Node" parent="."]
@@ -108,7 +109,7 @@ position = Vector2(0, 10)
 
 [node name="Cursor" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(32, -48)
+position = Vector2(64, -32)
 script = ExtResource("11_4rud1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Cursor"]
