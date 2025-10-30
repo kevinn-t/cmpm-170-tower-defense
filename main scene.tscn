@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://daa10ieakewou"]
+[gd_scene load_steps=17 format=4 uid="uid://daa10ieakewou"]
 
 [ext_resource type="PackedScene" uid="uid://xuoh0gxe3ly5" path="res://Prefabs/city_center.tscn" id="1_0afw7"]
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://l6kpnfpk0r4" path="res://game_manager.gd" id="8_18xev"]
 [ext_resource type="PackedScene" uid="uid://cbsn06bvv4s7i" path="res://Prefabs/habitat.tscn" id="9_c1o4b"]
 [ext_resource type="PackedScene" uid="uid://d2dghsgfkop01" path="res://Prefabs/container.tscn" id="10_neqfu"]
+[ext_resource type="Script" uid="uid://cy6epkvluaqq0" path="res://Scripts/cursor.gd" id="11_4rud1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_neqfu"]
 vertices = PackedVector2Array(334.28906, 117.890625, -374.59375, 110.10156, -389.35938, -126, 341.6875, -126)
@@ -52,9 +53,14 @@ tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_aqyhw")
 sources/1 = SubResource("TileSetAtlasSource_18xev")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_neqfu"]
+atlas = ExtResource("7_aqyhw")
+region = Rect2(0, 96, 32, 32)
+
 [node name="Main" type="Node2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_neqfu")
 
 [node name="City Center" parent="." instance=ExtResource("1_0afw7")]
@@ -97,3 +103,11 @@ rotation = 0.5235988
 z_index = -1
 y_sort_enabled = true
 position = Vector2(0, 10)
+
+[node name="Cursor" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(32, -48)
+script = ExtResource("11_4rud1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cursor"]
+texture = SubResource("AtlasTexture_neqfu")

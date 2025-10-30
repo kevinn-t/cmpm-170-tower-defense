@@ -14,4 +14,5 @@ script = ExtResource("1_ierel")
 texture = SubResource("AtlasTexture_oaqhv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)

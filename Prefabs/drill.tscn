@@ -18,6 +18,7 @@ texture = SubResource("AtlasTexture_ftk6u")
 autostart = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
 disabled = true
 
