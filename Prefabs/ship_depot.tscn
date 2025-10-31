@@ -16,3 +16,8 @@ texture = SubResource("AtlasTexture_oaqhv")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

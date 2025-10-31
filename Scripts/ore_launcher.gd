@@ -9,7 +9,7 @@ var city_center : Node2D
 @onready var shipment_cooldown : Timer = $Timer
 
 func _ready() -> void:
-	city_center = get_node("%City Center")
+	#city_center = get_node("%City Center")
 	shipment_cooldown.wait_time = cooldown_time
 
 func _process(_delta : float) -> void:

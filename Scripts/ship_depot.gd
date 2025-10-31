@@ -1,20 +1,35 @@
 extends Building
 
-# how much ore/sec this would pull from adjacent ore producers
-@export var ore_pull_speed : int 
-
 @export var ore_stored : int = 1
 @export var max_ore_stored : int = 10
 @export var workers : int = 0
 @export var max_workers : int = 2
-@export var ship_away : bool = false
+const container_prefab = preload("res://Prefabs/container.tscn")
 
+'''
+fill the container spawned by this depot
+* 1 ore per second until full
+* if no container nearby then spawn one
+* if no worker then do nothing [DONE]
+'''
 
-func _process(_delta: float) -> void:
-	ore_pull_speed = workers # PLACEHOLDER make this scale by pecentage at some point
+func _on_timer_timeout() -> void:
+	print(str(self) + " ore stored: " + str(ore_stored))
+	if (workers <= 0):
+		return
+		
+	if (ore_stored <= 0):
+		return
+		
+	var all_containers = get_tree().get_nodes_in_group("container")
+	var has_container = false
+	for _container in all_containers:
+		if _container.global_position.distance_to(global_position) < 4: # actual range=17.89
+			ore_stored -= 1
+			_container.ore_stored += 1
+			has_container = true
 	
-	# if theres a worker
-	#	if theres a package above
-	#		push ore into package
-	#	otherwise
-	# 		make new package
+	if (!has_container):
+		var new_container = container_prefab.instantiate()
+		add_child(new_container)
+		new_container.global_position = Vector2(global_position.x,global_position.y-2)

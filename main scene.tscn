@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://daa10ieakewou"]
+[gd_scene load_steps=18 format=4 uid="uid://daa10ieakewou"]
 
 [ext_resource type="PackedScene" uid="uid://xuoh0gxe3ly5" path="res://Prefabs/city_center.tscn" id="1_0afw7"]
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="7_aqyhw"]
 [ext_resource type="Script" uid="uid://l6kpnfpk0r4" path="res://game_manager.gd" id="8_18xev"]
 [ext_resource type="PackedScene" uid="uid://cbsn06bvv4s7i" path="res://Prefabs/habitat.tscn" id="9_c1o4b"]
+[ext_resource type="Script" uid="uid://h7gr6s0k442g" path="res://Scripts/ore_container.gd" id="10_7fvey"]
 [ext_resource type="PackedScene" uid="uid://d2dghsgfkop01" path="res://Prefabs/container.tscn" id="10_neqfu"]
 [ext_resource type="Script" uid="uid://cy6epkvluaqq0" path="res://Scripts/cursor.gd" id="11_4rud1"]
 
@@ -80,7 +81,7 @@ position = Vector2(128, 8)
 
 [node name="Ship Depot" parent="." instance=ExtResource("4_aqyhw")]
 y_sort_enabled = true
-position = Vector2(32, 32)
+position = Vector2(80, 8)
 
 [node name="Habitat" parent="." instance=ExtResource("9_c1o4b")]
 position = Vector2(-48, 24)
@@ -98,14 +99,16 @@ zoom = Vector2(2.11, 2.11)
 unique_name_in_owner = true
 script = ExtResource("8_18xev")
 
+[node name="Container" parent="." instance=ExtResource("10_neqfu")]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(-5, 8.660254)
+rotation = 0.5235988
+script = ExtResource("10_7fvey")
+
 [node name="Ship" parent="." instance=ExtResource("5_18xev")]
 y_sort_enabled = true
 rotation = 0.5235988
-
-[node name="Container" parent="Ship" instance=ExtResource("10_neqfu")]
-z_index = -1
-y_sort_enabled = true
-position = Vector2(0, 10)
 
 [node name="Cursor" type="Node2D" parent="."]
 unique_name_in_owner = true
