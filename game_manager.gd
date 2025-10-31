@@ -1,5 +1,12 @@
 extends Node
 
+'''
+TODO
+* disable scripts for previews
+* change groups for previews
+* revert the above changes when placed
+'''
+
 @export var stored : Dictionary = {
 	"ore" = 0,
 	"money" = 50
