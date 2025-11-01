@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=4 uid="uid://daa10ieakewou"]
+[gd_scene load_steps=19 format=4 uid="uid://daa10ieakewou"]
 
 [ext_resource type="PackedScene" uid="uid://xuoh0gxe3ly5" path="res://Prefabs/city_center.tscn" id="1_0afw7"]
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
+[ext_resource type="Script" uid="uid://dojrj0l83t746" path="res://Scripts/camera_controller.gd" id="3_ohk57"]
 [ext_resource type="PackedScene" uid="uid://bjuiop2xqasns" path="res://Prefabs/launcher.tscn" id="3_sgb2t"]
 [ext_resource type="PackedScene" uid="uid://dml41df75scnh" path="res://Prefabs/ship_depot.tscn" id="4_aqyhw"]
 [ext_resource type="PackedScene" uid="uid://jivqusd7xwo1" path="res://Prefabs/ship.tscn" id="5_18xev"]
 [ext_resource type="Texture2D" uid="uid://disxuxh3oxbgs" path="res://Art/baseTile.png" id="6_sgb2t"]
 [ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="7_aqyhw"]
-[ext_resource type="Script" uid="uid://l6kpnfpk0r4" path="res://game_manager.gd" id="8_18xev"]
+[ext_resource type="Script" uid="uid://l6kpnfpk0r4" path="res://Scripts/game_manager.gd" id="8_18xev"]
 [ext_resource type="PackedScene" uid="uid://cbsn06bvv4s7i" path="res://Prefabs/habitat.tscn" id="9_c1o4b"]
 [ext_resource type="Script" uid="uid://h7gr6s0k442g" path="res://Scripts/ore_container.gd" id="10_7fvey"]
 [ext_resource type="PackedScene" uid="uid://d2dghsgfkop01" path="res://Prefabs/container.tscn" id="10_neqfu"]
@@ -74,6 +75,7 @@ tile_set = SubResource("TileSet_18xev")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(14, -4)
 zoom = Vector2(2.11, 2.11)
+script = ExtResource("3_ohk57")
 
 [node name="Game Manager" type="Node" parent="."]
 unique_name_in_owner = true
