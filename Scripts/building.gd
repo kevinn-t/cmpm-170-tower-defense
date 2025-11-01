@@ -9,6 +9,7 @@ extends StaticBody2D
 
 signal onHit()
 signal onDestroyed()
+signal onBuilt()
 
 func get_texture() -> Texture2D:
 	return $Sprite2D.texture

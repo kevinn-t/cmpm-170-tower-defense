@@ -77,48 +77,48 @@ position = Vector2(14, -4)
 zoom = Vector2(2.11, 2.11)
 script = ExtResource("3_ohk57")
 
-[node name="Game Manager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_18xev")
 
-[node name="Buildings" type="Node2D" parent="."]
+[node name="Buildings" type="Node2D" parent="GameManager"]
 
-[node name="City Center" parent="Buildings" instance=ExtResource("1_0afw7")]
+[node name="City Center" parent="GameManager/Buildings" instance=ExtResource("1_0afw7")]
 position = Vector2(-48, -18)
 
-[node name="Drill" parent="Buildings" instance=ExtResource("2_ux2rm")]
+[node name="Drill" parent="GameManager/Buildings" instance=ExtResource("2_ux2rm")]
 position = Vector2(64, 0)
 
-[node name="Launcher" parent="Buildings" instance=ExtResource("3_sgb2t")]
+[node name="Launcher" parent="GameManager/Buildings" instance=ExtResource("3_sgb2t")]
 position = Vector2(128, 8)
 
-[node name="Ship Depot" parent="Buildings" instance=ExtResource("4_aqyhw")]
+[node name="Ship Depot" parent="GameManager/Buildings" instance=ExtResource("4_aqyhw")]
 position = Vector2(80, 8)
 
-[node name="Habitat" parent="Buildings" instance=ExtResource("9_c1o4b")]
+[node name="Habitat" parent="GameManager/Buildings" instance=ExtResource("9_c1o4b")]
 position = Vector2(-48, 24)
 
-[node name="Units" type="Node2D" parent="."]
+[node name="Units" type="Node2D" parent="GameManager"]
 
-[node name="Ship" parent="Units" instance=ExtResource("5_18xev")]
+[node name="Ship" parent="GameManager/Units" instance=ExtResource("5_18xev")]
 y_sort_enabled = true
 rotation = 0.5235988
 
-[node name="Container" parent="Units" instance=ExtResource("10_neqfu")]
+[node name="Container" parent="GameManager/Units" instance=ExtResource("10_neqfu")]
 z_index = -1
 position = Vector2(-5, 8.660254)
 rotation = 0.5235988
 script = ExtResource("10_7fvey")
 
-[node name="Cursor" type="Node2D" parent="."]
+[node name="Cursor" type="Node2D" parent="GameManager"]
 unique_name_in_owner = true
 position = Vector2(64, -32)
 script = ExtResource("11_4rud1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Cursor"]
+[node name="Sprite2D" type="Sprite2D" parent="GameManager/Cursor"]
 texture = SubResource("AtlasTexture_neqfu")
 
-[node name="PreviewParent" type="Node2D" parent="Cursor"]
+[node name="PreviewParent" type="Node2D" parent="GameManager/Cursor"]
 
 [node name="UI" type="CanvasLayer" parent="."]
 

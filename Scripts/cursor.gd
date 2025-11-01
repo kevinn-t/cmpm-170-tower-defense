@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var ground = $"../GroundLayer"
+@onready var ground = $"../../GroundLayer"
 func _ready() -> void:
 	pass # Replace with function body.
 

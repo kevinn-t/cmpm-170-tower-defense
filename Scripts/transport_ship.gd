@@ -1,4 +1,6 @@
-extends Node2D
+class_name  TransportShip
+extends Unit
+
 
 @export var package_attached : bool
 
@@ -11,3 +13,5 @@ extends Node2D
 #	start moving toward recipient
 # after delivered
 # 	come back and repeat
+
+# look at enums for state

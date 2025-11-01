@@ -1,3 +1,4 @@
+class_name GameManager
 extends Node
 
 '''
@@ -24,9 +25,12 @@ TODO
 	"res://Prefabs/ship_depot.tscn"
 ]
 
-@onready var previewInstanceParent : Node2D = $"../Cursor/PreviewParent"
+@onready var previewInstanceParent : Node2D = $"Cursor/PreviewParent"
 const BUILDING_BUTTON = preload("res://Prefabs/UI/building_button.tscn")
 var buildingBrush = null;
+
+@onready var unitParent : Node2D = $"Units"
+
 
 func assign_workers(amount : int) -> void:
 	if (unemployed_population - amount > 0):
@@ -68,8 +72,10 @@ func build(buildingName : String, pos : Vector2):
 	
 	buildingsParent.add_child(building)
 	building.global_position = pos
+	await  building.ready
+	building.onBuilt.emit()
 	updateUI()
-@onready var buildingsParent : Node2D = $"../Buildings"
+@onready var buildingsParent : Node2D = $"Buildings"
 
 func populatePreviews() -> void:
 	for b in buildingPrefabs:

@@ -1,9 +1,23 @@
+class_name TransportShipDepot
 extends Building
 
 @export var ore_stored : int = 1
 @export var max_ore_stored : int = 10
 @export var workers : int = 0
 @export var max_workers : int = 2
+
+const SHIP = preload("res://Prefabs/ship.tscn")
+
+func _ready() -> void:
+	onBuilt.connect(on_built)
+
+func on_built():
+	pass
+	# create my ship
+	var gm : GameManager = find_parent("GameManager")
+	var inst : TransportShip = SHIP.instantiate()
+	gm.unitParent.add_child(inst)
+	inst.global_position = global_position
 
 func _on_timer_timeout() -> void:
 	if (workers <= 0):
