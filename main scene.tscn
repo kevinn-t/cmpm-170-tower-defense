@@ -100,9 +100,10 @@ position = Vector2(-48, 24)
 
 [node name="Units" type="Node2D" parent="GameManager"]
 
-[node name="Ship" parent="GameManager/Units" instance=ExtResource("5_18xev")]
+[node name="Ship" parent="GameManager/Units" node_paths=PackedStringArray("home") instance=ExtResource("5_18xev")]
 y_sort_enabled = true
 rotation = 0.5235988
+home = NodePath("../../Buildings/Ship Depot")
 
 [node name="Container" parent="GameManager/Units" instance=ExtResource("10_neqfu")]
 z_index = -1

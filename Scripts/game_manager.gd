@@ -64,17 +64,19 @@ func subtractCost(cost : Dictionary) -> bool: # returns success
 	return true;
 
 func build(buildingName : String, pos : Vector2):
-	#var buildingPrefab : PackedScene = load(buildingPrefabs[buildingName])
-	var building :Building = previewInstanceParent.get_node(buildingName)
-	if not subtractCost(building.buildCost):
-		building.queue_free()
+	if not subtractCost(previewInstanceParent.get_node(buildingName).buildCost):
 		return
+	var buildingPrefab : PackedScene = load(buildingPrefabs[previewInstanceParent.get_node(buildingName).get_index()])
+	var building :Building = buildingPrefab.instantiate()
 	
 	buildingsParent.add_child(building)
 	building.global_position = pos
-	await  building.ready
+	
+	#await  building.ready
 	building.onBuilt.emit()
 	updateUI()
+	print("built ", building, " ", building.global_position)
+
 @onready var buildingsParent : Node2D = $"Buildings"
 
 func populatePreviews() -> void:
