@@ -8,6 +8,7 @@ atlas = ExtResource("2_2pwgh")
 region = Rect2(128, 32, 64, 64)
 
 [node name="Launcher" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_4emaf")
 
 [node name="Timer" type="Timer" parent="."]

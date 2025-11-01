@@ -8,6 +8,7 @@ atlas = ExtResource("2_qpmyw")
 region = Rect2(96, 32, 32, 32)
 
 [node name="Ship Depot" type="StaticBody2D" groups=["ship_depot"]]
+y_sort_enabled = true
 script = ExtResource("1_ierel")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

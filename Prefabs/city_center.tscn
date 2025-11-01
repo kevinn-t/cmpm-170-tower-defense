@@ -8,6 +8,7 @@ atlas = ExtResource("2_ai34k")
 region = Rect2(32, 32, 64, 64)
 
 [node name="City Center" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_8neen")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

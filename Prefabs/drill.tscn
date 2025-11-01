@@ -8,6 +8,7 @@ atlas = ExtResource("2_07swf")
 region = Rect2(96, 64, 32, 28)
 
 [node name="Drill" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_0n8n4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

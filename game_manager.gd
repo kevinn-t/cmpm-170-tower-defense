@@ -8,7 +8,7 @@ TODO
 '''
 
 @export var stored : Dictionary = {
-	"ore" = 0,
+	"ore" = 10,
 	"money" = 50
 }
 
@@ -65,9 +65,11 @@ func build(buildingName : String, pos : Vector2):
 	if not subtractCost(building.buildCost):
 		building.queue_free()
 		return
-	add_child(building)
+	
+	buildingsParent.add_child(building)
 	building.global_position = pos
 	updateUI()
+@onready var buildingsParent : Node2D = $"../Buildings"
 
 func populatePreviews() -> void:
 	for b in buildingPrefabs:
@@ -87,16 +89,15 @@ func populateBuildUI():
 		button.pressed.connect(clicked)
 		parent.add_child(button)
 		
-func buildingBrushSelected(name : String):
-	print(name)
-	buildingBrush = name
+func buildingBrushSelected(brush_name : String):
+	buildingBrush = brush_name
 	updateBuildingBrush()
 
 func resetBuildingBrush():
 	buildingBrush = null
 	updateBuildingBrush()
 
-func foldingResetBuildingBrush(folded):
+func foldingResetBuildingBrush(_folded):
 	resetBuildingBrush()
 
 func updateBuildingBrush():
@@ -112,3 +113,12 @@ func storedString() -> String:
 		if stored[k] > 0:
 			s+= str(stored[k]) + " " + str(k) + " "
 	return s
+@onready var ground: TileMapLayer = $"../GroundLayer"
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				#event.global_position
+				var tile_position = ground.local_to_map(event.global_position)
+				var ws_pos = ground.map_to_local(tile_position)
+				build(buildingBrush, ws_pos)
