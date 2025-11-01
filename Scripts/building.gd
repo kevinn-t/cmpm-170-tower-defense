@@ -22,4 +22,9 @@ func hit(attacker : CharacterBody2D):# not character, unit
 		onHit.emit()
 
 func costString() -> String:
-	return str(buildCost)
+	#return str(buildCost)
+	var s = ""
+	for k in buildCost.keys():
+		if buildCost[k] > 0:
+			s+= str(buildCost[k]) + " " + str(k) + " "
+	return s

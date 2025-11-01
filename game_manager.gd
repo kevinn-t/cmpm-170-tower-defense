@@ -26,7 +26,7 @@ TODO
 
 @onready var previewInstanceParent : Node2D = $"../Cursor/PreviewParent"
 const BUILDING_BUTTON = preload("res://Prefabs/UI/building_button.tscn")
-var buildingBrush = -1;
+var buildingBrush = null;
 
 func assign_workers(amount : int) -> void:
 	if (unemployed_population - amount > 0):
@@ -38,6 +38,12 @@ func _ready() -> void:
 	var _snapped = ground_layer.map_to_local(ground_layer.local_to_map(pos))
 	populatePreviews()
 	populateBuildUI()
+	
+	$"../UI".visible = true
+	$"../UI/VBoxContainer/FoldableContainer/VBoxContainer/Button".pressed.connect(resetBuildingBrush)
+	$"../UI/VBoxContainer/FoldableContainer".folding_changed.connect(foldingResetBuildingBrush)
+	updateBuildingBrush()
+	updateUI()
 
 
 func subtractCost(cost : Dictionary) -> bool: # returns success
@@ -61,6 +67,7 @@ func build(buildingName : String, pos : Vector2):
 		return
 	add_child(building)
 	building.global_position = pos
+	updateUI()
 
 func populatePreviews() -> void:
 	for b in buildingPrefabs:
@@ -69,7 +76,7 @@ func populatePreviews() -> void:
 		previewInstanceParent.add_child(inst)
 
 func populateBuildUI():
-	var parent : VBoxContainer = $"../UI/FoldableContainer/VBoxContainer"
+	var parent : VBoxContainer = $"../UI/VBoxContainer/FoldableContainer/VBoxContainer"
 	for inst :Building in previewInstanceParent.get_children():
 		var button : TextureButton = BUILDING_BUTTON.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 		button.texture_normal = inst.get_texture()
@@ -82,5 +89,26 @@ func populateBuildUI():
 		
 func buildingBrushSelected(name : String):
 	print(name)
+	buildingBrush = name
+	updateBuildingBrush()
+
+func resetBuildingBrush():
+	buildingBrush = null
+	updateBuildingBrush()
+
+func foldingResetBuildingBrush(folded):
+	resetBuildingBrush()
+
+func updateBuildingBrush():
 	for b : Building in previewInstanceParent.get_children():
-		b.visible = b.name == name
+		b.visible = b.name == buildingBrush
+
+func updateUI():
+	$"../UI/VBoxContainer/Stored".text = storedString()
+	
+func storedString() -> String:
+	var s = ""
+	for k in stored.keys():
+		if stored[k] > 0:
+			s+= str(stored[k]) + " " + str(k) + " "
+	return s
