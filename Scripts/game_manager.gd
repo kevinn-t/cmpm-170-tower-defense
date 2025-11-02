@@ -127,7 +127,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_pressed():
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				#event.global_position
-				var tile_position = ground.local_to_map(event.global_position)
-				var ws_pos = ground.map_to_local(tile_position)
+				var tile_position = ground.local_to_map(ground.to_local(event.global_position))
+				var ws_pos = ground.to_global(ground.map_to_local(tile_position))
+				print(str($"../Camera2D".global_position) + " " + str(event.global_position) + " ", str(ws_pos) + " " + str(%Cursor.global_position))
 				if (buildingBrush):
-					build(buildingBrush, ws_pos)
+					build(buildingBrush, %Cursor.global_position)
