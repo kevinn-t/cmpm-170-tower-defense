@@ -1,11 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjuiop2xqasns"]
+[gd_scene load_steps=3 format=3 uid="uid://bjuiop2xqasns"]
 
 [ext_resource type="Script" uid="uid://d2duts7q2fvf4" path="res://Scripts/ore_launcher.gd" id="1_4emaf"]
-[ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="2_2pwgh"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1ru3"]
-atlas = ExtResource("2_2pwgh")
-region = Rect2(128, 32, 64, 64)
+[ext_resource type="PackedScene" uid="uid://x3xnp7n7xnv4" path="res://Prefabs/Previews/launcher_sprite.tscn" id="2_2pwgh"]
 
 [node name="Launcher" type="StaticBody2D"]
 y_sort_enabled = true
@@ -15,9 +11,8 @@ script = ExtResource("1_4emaf")
 wait_time = 5.0
 one_shot = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." instance=ExtResource("2_2pwgh")]
 position = Vector2(0, -8)
-texture = SubResource("AtlasTexture_u1ru3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

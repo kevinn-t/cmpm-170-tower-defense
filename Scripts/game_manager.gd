@@ -31,6 +31,9 @@ var buildingBrush = null;
 
 @onready var unitParent : Node2D = $"Units"
 
+@onready var ground: TileMapLayer = $"../GroundLayer"
+@onready var buildingsParent : Node2D = $"Buildings"
+@onready var buildingUIButtonParent : VBoxContainer = $"../UI/VBoxContainer/FoldableContainer/VBoxContainer"
 
 func assign_workers(amount : int) -> void:
 	if (unemployed_population - amount > 0):
@@ -77,8 +80,6 @@ func build(buildingName : String, pos : Vector2):
 	updateUI()
 	print("built ", building, " ", building.global_position)
 
-@onready var buildingsParent : Node2D = $"Buildings"
-
 func populatePreviews() -> void:
 	for b in buildingPrefabs:
 		var prefab : PackedScene = load(b)
@@ -86,7 +87,6 @@ func populatePreviews() -> void:
 		previewInstanceParent.add_child(inst)
 
 func populateBuildUI():
-	var parent : VBoxContainer = $"../UI/VBoxContainer/FoldableContainer/VBoxContainer"
 	for inst :Building in previewInstanceParent.get_children():
 		var button : TextureButton = BUILDING_BUTTON.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 		button.texture_normal = inst.get_texture()
@@ -95,7 +95,7 @@ func populateBuildUI():
 		var clicked = func():
 			buildingBrushSelected(inst.name)
 		button.pressed.connect(clicked)
-		parent.add_child(button)
+		buildingUIButtonParent.add_child(button)
 		
 func buildingBrushSelected(brush_name : String):
 	buildingBrush = brush_name
@@ -121,14 +121,10 @@ func storedString() -> String:
 		if stored[k] > 0:
 			s+= str(stored[k]) + " " + str(k) + " "
 	return s
-@onready var ground: TileMapLayer = $"../GroundLayer"
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			if event.button_index == MOUSE_BUTTON_LEFT:
-				#event.global_position
-				var tile_position = ground.local_to_map(ground.to_local(event.global_position))
-				var ws_pos = ground.to_global(ground.map_to_local(tile_position))
-				print(str($"../Camera2D".global_position) + " " + str(event.global_position) + " ", str(ws_pos) + " " + str(%Cursor.global_position))
 				if (buildingBrush):
 					build(buildingBrush, %Cursor.global_position)

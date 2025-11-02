@@ -1,19 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbsn06bvv4s7i"]
+[gd_scene load_steps=3 format=3 uid="uid://cbsn06bvv4s7i"]
 
-[ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="1_hlta8"]
 [ext_resource type="Script" uid="uid://dr3qt31ukt5uj" path="res://Scripts/habitat.gd" id="1_q5i6c"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_18xev"]
-atlas = ExtResource("1_hlta8")
-region = Rect2(0, 26, 32, 32)
+[ext_resource type="PackedScene" uid="uid://dk455q2pfy50b" path="res://Prefabs/Previews/habitat_sprite.tscn" id="2_q5i6c"]
 
 [node name="Habitat" type="StaticBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_q5i6c")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -6)
-texture = SubResource("AtlasTexture_18xev")
+[node name="Sprite2D" parent="." instance=ExtResource("2_q5i6c")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

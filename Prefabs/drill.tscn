@@ -1,19 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://digijb3eflvbs"]
+[gd_scene load_steps=3 format=3 uid="uid://digijb3eflvbs"]
 
 [ext_resource type="Script" uid="uid://bu4i8o8xtb7lq" path="res://Scripts/ore_producer.gd" id="1_0n8n4"]
-[ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="2_07swf"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ftk6u"]
-atlas = ExtResource("2_07swf")
-region = Rect2(96, 64, 32, 28)
+[ext_resource type="PackedScene" uid="uid://6bbjxmbvawxa" path="res://Prefabs/Previews/drill_sprite.tscn" id="2_07swf"]
 
 [node name="Drill" type="StaticBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_0n8n4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." instance=ExtResource("2_07swf")]
 position = Vector2(0, -2)
-texture = SubResource("AtlasTexture_ftk6u")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
