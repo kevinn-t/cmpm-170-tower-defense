@@ -129,4 +129,5 @@ func _unhandled_input(event: InputEvent) -> void:
 				#event.global_position
 				var tile_position = ground.local_to_map(event.global_position)
 				var ws_pos = ground.map_to_local(tile_position)
-				build(buildingBrush, ws_pos)
+				if (buildingBrush):
+					build(buildingBrush, ws_pos)

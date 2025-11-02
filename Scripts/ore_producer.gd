@@ -23,10 +23,12 @@ func _on_timer_timeout() -> void:
 		# maybe range is too short? for some reason this is detecting the preview
 		if depot.global_position.distance_to(global_position) < check_radius: # actual range=17.89
 			nearby.append(depot)
+			
+	if (index >= nearby.size()):
+		index = 0
 	if (nearby):
 		if (nearby[index].ore_stored < nearby[index].max_ore_stored):
 			nearby[index].ore_stored += ore_per_second
 		
 	index += 1
-	if (index >= nearby.size()):
-		index = 0
+	
