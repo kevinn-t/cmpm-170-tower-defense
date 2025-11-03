@@ -20,6 +20,10 @@ config/icon="uid://r1wyym74q2hw"
 
 ship_depot=""
 container=""
+launcher=""
+drill=""
+city_center=""
+habitat=""
 
 [input]
 

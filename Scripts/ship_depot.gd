@@ -24,8 +24,6 @@ BUT you don't see it happening to the Ship Depot under PreviewParent
 const SHIP = preload("res://Prefabs/ship.tscn")
 const CONTAINER = preload("res://Prefabs/container.tscn")
 
-@onready var gm : GameManager = find_parent("GameManager")
-
 func _ready() -> void:
 	onBuilt.connect(on_built)
 
@@ -33,7 +31,7 @@ func on_built():
 	pass
 	# create my ship
 	var inst : TransportShip = SHIP.instantiate()
-	gm.unitParent.add_child(inst)
+	$"../../Units".add_child(inst)
 	inst.global_position = global_position
 
 func _on_timer_timeout() -> void:

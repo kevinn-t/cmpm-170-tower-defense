@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07swf"]
 size = Vector2(33, 24)
 
-[node name="Drill" type="StaticBody2D"]
+[node name="Drill" type="StaticBody2D" groups=["drill"]]
 y_sort_enabled = true
 script = ExtResource("1_0n8n4")
 

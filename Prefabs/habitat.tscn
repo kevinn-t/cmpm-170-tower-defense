@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dr3qt31ukt5uj" path="res://Scripts/habitat.gd" id="1_q5i6c"]
 [ext_resource type="PackedScene" uid="uid://dk455q2pfy50b" path="res://Prefabs/Previews/habitat_sprite.tscn" id="2_q5i6c"]
 
-[node name="Habitat" type="StaticBody2D"]
+[node name="Habitat" type="StaticBody2D" groups=["habitat"]]
 y_sort_enabled = true
 script = ExtResource("1_q5i6c")
 

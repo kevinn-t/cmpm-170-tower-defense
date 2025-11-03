@@ -6,6 +6,7 @@ extends Building
 @export var max_workers : int = 4
 
 @onready var shipment_cooldown : Timer = $Timer
+@onready var gm : GameManager = $"../.."
 
 '''
 increase velocity.y for every container in packages_in_loading
@@ -24,8 +25,10 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if (shipment_cooldown.time_left > 0 and workers > 0):
-		var packages_in_loading : Array[StaticBody2D] = $"Package Check Area".get_overlapping_bodies()
-		for package in packages_in_loading:
-			package.position.move_toward(Vector2(position.x, 999), 50) # change y to top of camera 
-		print("shipped ore")
-		shipment_cooldown.start()
+		for child in get_children():
+			if child.is_in_group("container"):
+				var cam = $"../../Camera2D"
+				child.position.move_toward(Vector2(global_position.x, cam.get_screen_center_position()+cam.get_viewport_rect().size.y), 50)
+				shipment_cooldown.start()
+				gm.stored["money"] += child.ore_stored * money_per_ore
+				

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d2duts7q2fvf4" path="res://Scripts/ore_launcher.gd" id="1_4emaf"]
 [ext_resource type="PackedScene" uid="uid://x3xnp7n7xnv4" path="res://Prefabs/Previews/launcher_sprite.tscn" id="2_2pwgh"]
 
-[node name="Launcher" type="StaticBody2D"]
+[node name="Launcher" type="StaticBody2D" groups=["launcher"]]
 y_sort_enabled = true
 script = ExtResource("1_4emaf")
 

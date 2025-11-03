@@ -34,7 +34,7 @@
 	  "sprite":"res://Prefabs/Previews/drill_sprite.tscn",
 	  "prefab":"res://Prefabs/drill.tscn"
 	},
-	"ship_depot":{
+	"ship depot":{
 	  "name": "ship depot",
 	  "cost": {
 		"ore": 8,
