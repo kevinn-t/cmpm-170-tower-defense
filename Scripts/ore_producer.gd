@@ -17,18 +17,18 @@ func _on_timer_timeout() -> void:
 	if (workers <= 0):
 		return
 	
-	var depots : Array[Node] = get_tree().get_nodes_in_group("ship_depot")
-	var nearby : Array[Node] = []
-	for depot in depots:
-		# maybe range is too short? for some reason this is detecting the preview
-		if depot.global_position.distance_to(global_position) < check_radius: # actual range=17.89
-			nearby.append(depot)
-			
-	if (index >= nearby.size()):
+	# switch depot checking to use Depot Check Area
+	var nearby : Array[Node2D] = $"Depot Check Area".get_overlapping_bodies()
+	var depots : Array[StaticBody2D] = []
+	
+	for building in nearby:
+		if building.is_in_group("ship_depot"):
+			depots.append(building)
+
+	if (index >= depots.size()):
 		index = 0
-	if (nearby):
-		if (nearby[index].ore_stored < nearby[index].max_ore_stored):
-			nearby[index].ore_stored += ore_per_second
-		
+	if (depots):
+		if (depots[index].ore_stored < depots[index].max_ore_stored):
+			depots[index].ore_stored += ore_per_second
 	index += 1
 	

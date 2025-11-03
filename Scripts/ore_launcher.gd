@@ -5,20 +5,27 @@ extends Building
 @export var workers : int = 0
 @export var max_workers : int = 4
 
-var city_center : Node2D
 @onready var shipment_cooldown : Timer = $Timer
 
+'''
+increase velocity.y for every container in packages_in_loading
+do it on a cooldown
+after package reaches top bound of camera delete it and 
+add money to game_manager.stored["money"]
+
+top of camera = 
+position of camera
++
+get_visible_rect().size.y / 2
+'''
+
 func _ready() -> void:
-	#city_center = get_node("%City Center")
 	shipment_cooldown.wait_time = cooldown_time
 
-func _process(_delta : float) -> void:
+func _physics_process(_delta: float) -> void:
 	if (shipment_cooldown.time_left > 0 and workers > 0):
-		# at some point lower the cooldown_time when there are multiple workers
-		# TODO LEFT OFF HERE DO THIS
-		# find out how to detect collisions
-		# increase velocity.y for colliding Container
-		# make this shoot ONE colliding package upward at a time
+		var packages_in_loading : Array[StaticBody2D] = $"Package Check Area".get_overlapping_bodies()
+		for package in packages_in_loading:
+			package.position.move_toward(Vector2(position.x, 999), 50) # change y to top of camera 
 		print("shipped ore")
 		shipment_cooldown.start()
-		
