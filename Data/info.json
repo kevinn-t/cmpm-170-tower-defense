@@ -53,6 +53,16 @@
 	  "size":2,
 	  "sprite":"res://Prefabs/Previews/launcher_sprite.tscn",
 	  "prefab":"res://Prefabs/launcher.tscn"
+	},
+	"turret":{
+	  "name": "turret",
+	  "cost": {
+		"ore": 10,
+		"money": 10
+	  },
+	  "size":1,
+	  "sprite":"res://Prefabs/Previews/turret.tscn",
+	  "prefab":"res://Prefabs/turret.tscn"
 	}
   },
   "units":{
