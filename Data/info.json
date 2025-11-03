@@ -1,0 +1,64 @@
+{
+  "starting_stored": {
+	"ore": 20,
+	"money": 30
+  },
+  "buildings": {
+	"city" : {
+	  "name": "city",
+	  "cost": {
+		"ore": 20,
+		"money": 10
+	  },
+	  "size":2,
+	  "sprite":"res://Prefabs/Previews/city_sprite.tscn",
+	  "prefab":"res://Prefabs/city_center.tscn"
+	},
+	"habitat":{
+	  "name": "habitat",
+	  "cost": {
+		"ore": 10,
+		"money": 5
+	  },
+	  "size":1,
+	  "sprite":"res://Prefabs/Previews/habitat_sprite.tscn",
+	  "prefab":"res://Prefabs/habitat.tscn"
+	},
+	"drill":{
+	  "name": "drill",
+	  "cost": {
+		"ore": 5,
+		"money": 5
+	  },
+	  "size":1,
+	  "sprite":"res://Prefabs/Previews/drill_sprite.tscn",
+	  "prefab":"res://Prefabs/drill.tscn"
+	},
+	"ship_depot":{
+	  "name": "ship depot",
+	  "cost": {
+		"ore": 8,
+		"money": 8
+	  },
+	  "size":1,
+	  "sprite":"res://Prefabs/Previews/ship_depot_sprite.tscn",
+	  "prefab":"res://Prefabs/ship_depot.tscn"
+	},
+	"launcher":{
+	  "name": "launcher",
+	  "cost": {
+		"ore": 100,
+		"money": 30
+	  },
+	  "size":2,
+	  "sprite":"res://Prefabs/Previews/launcher_sprite.tscn",
+	  "prefab":"res://Prefabs/launcher.tscn"
+	}
+  },
+  "units":{
+	"transport":{
+	  "name": "transport",
+	  "parent" : "ship_depot"
+	}
+  }
+}

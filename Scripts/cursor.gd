@@ -1,6 +1,8 @@
 extends Node2D
 
-@onready var ground = $"../../GroundLayer"
+@onready var ground = $"../GroundLayer"
+@onready var gm : GameManager = $".."
+
 func _ready() -> void:
 	pass # Replace with function body.
 
