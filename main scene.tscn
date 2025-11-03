@@ -12,9 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://cbsn06bvv4s7i" path="res://Prefabs/habitat.tscn" id="9_c1o4b"]
 [ext_resource type="PackedScene" uid="uid://d2dghsgfkop01" path="res://Prefabs/container.tscn" id="10_neqfu"]
 [ext_resource type="Script" uid="uid://cy6epkvluaqq0" path="res://Scripts/cursor.gd" id="11_4rud1"]
-[ext_resource type="Texture2D" uid="uid://bepxf3r4002oq" path="res://icon.svg" id="14_52ei1"]
+[ext_resource type="PackedScene" uid="uid://dbjsdcb8gin4k" path="res://Prefabs/enemy.tscn" id="14_52ei1"]
 [ext_resource type="Script" uid="uid://b84naho2s6x0q" path="res://Scripts/builder.gd" id="14_aovjg"]
-[ext_resource type="Script" uid="uid://dvgnsjfekgaek" path="res://Scripts/enemy.gd" id="14_v7vy4"]
+[ext_resource type="Script" uid="uid://dcfh5kofkok3d" path="res://Scripts/enemy_spawner.gd" id="15_v7vy4"]
+[ext_resource type="Texture2D" uid="uid://bepxf3r4002oq" path="res://icon.svg" id="16_v7vy4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_neqfu"]
 vertices = PackedVector2Array(334.28906, 117.890625, -374.59375, 110.10156, -389.35938, -126, 341.6875, -126)
@@ -62,8 +63,6 @@ sources/1 = SubResource("TileSetAtlasSource_18xev")
 [sub_resource type="AtlasTexture" id="AtlasTexture_neqfu"]
 atlas = ExtResource("7_aqyhw")
 region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7vy4"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("8_18xev")
@@ -143,14 +142,20 @@ text = "Unselect"
 [node name="Builder" type="Node2D" parent="."]
 script = ExtResource("14_aovjg")
 
-[node name="Enemy" type="CharacterBody2D" parent="."]
+[node name="Enemy" parent="." instance=ExtResource("14_52ei1")]
 position = Vector2(250, -10)
-script = ExtResource("14_v7vy4")
-speed = 20
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-scale = Vector2(0.155, 0.155)
-texture = ExtResource("14_52ei1")
+[node name="EnemySpawner" type="Node2D" parent="."]
+position = Vector2(316, -6)
+script = ExtResource("15_v7vy4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-shape = SubResource("RectangleShape2D_v7vy4")
+[node name="Timer" type="Timer" parent="EnemySpawner"]
+wait_time = 2.0
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemySpawner"]
+modulate = Color(0.8445472, 0, 0.3830754, 1)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("16_v7vy4")
+
+[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]

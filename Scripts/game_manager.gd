@@ -52,3 +52,7 @@ func subtractCost(cost : Dictionary) -> bool: # returns success
 			print("unrecognized key ", key)
 			return false
 	return true;
+
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.
