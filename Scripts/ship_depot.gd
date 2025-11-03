@@ -6,6 +6,13 @@ for some reason this is only working when childed under PreviewParent
 cuz inside of Buildings, this keeps spawning new containers even though
 theres already one
 
+my goal for this is to push ore into a container if detected
+if not, make a container
+
+BUT if you Play, go to Scene->Remote->GameManager->Buildings->Ship Depot
+you'll see a ton of @StaticBody's being made
+
+BUT you don't see it happening to the Ship Depot under PreviewParent
 '''
 
 @export var ore_stored : int = 1
@@ -46,6 +53,7 @@ func _on_timer_timeout() -> void:
 	print(containers.size())
 	
 	if containers.size() > 1:
+		print("too many containers in loading zone")
 		return
 	if containers.size() == 1:
 		if containers[0].ore_stored < containers[0].max_ore:
@@ -56,3 +64,4 @@ func _on_timer_timeout() -> void:
 		var inst : StaticBody2D = CONTAINER.instantiate()
 		add_child(inst)
 		inst.global_position = Vector2(global_position.x,global_position.y-6)
+		return
