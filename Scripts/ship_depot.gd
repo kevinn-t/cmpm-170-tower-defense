@@ -1,12 +1,23 @@
 class_name TransportShipDepot
 extends Building
 
+'''
+for some reason this is only working when childed under PreviewParent
+cuz inside of Buildings, this keeps spawning new containers even though
+theres already one
+
+'''
+
 @export var ore_stored : int = 1
 @export var max_ore_stored : int = 10
-@export var workers : int = 0
+@export var workers : int = 1
 @export var max_workers : int = 2
 
+
 const SHIP = preload("res://Prefabs/ship.tscn")
+const CONTAINER = preload("res://Prefabs/container.tscn")
+
+@onready var gm : GameManager = find_parent("GameManager")
 
 func _ready() -> void:
 	onBuilt.connect(on_built)
@@ -14,7 +25,6 @@ func _ready() -> void:
 func on_built():
 	pass
 	# create my ship
-	var gm : GameManager = find_parent("GameManager")
 	var inst : TransportShip = SHIP.instantiate()
 	gm.unitParent.add_child(inst)
 	inst.global_position = global_position
@@ -25,18 +35,24 @@ func _on_timer_timeout() -> void:
 		
 	if (ore_stored <= 0):
 		return
-		
-	var all_containers = get_tree().get_nodes_in_group("container")
-	var has_container = false
-	for _container in all_containers:
-		if _container.global_position.distance_to(global_position) < 4: # actual range=17.89
-			ore_stored -= 1
-			_container.ore_stored += 1
-			has_container = true
 	
-	if (!has_container):
-		# need to get this working
-		var container_prefab = load("res://Prefabs/container.tscn")
-		var new_container = container_prefab.instantiate()
-		add_child(new_container)
-		new_container.global_position = Vector2(global_position.x,global_position.y-2)
+	var package_check : Array[Node2D]  = $"Package Check Area".get_overlapping_bodies()
+	var containers : Array[StaticBody2D] = []
+	
+	for object in package_check:
+		if object.is_in_group("container"):
+			containers.append(object)
+			
+	print(containers.size())
+	
+	if containers.size() > 1:
+		return
+	if containers.size() == 1:
+		if containers[0].ore_stored < containers[0].max_ore:
+			ore_stored -= 1
+			containers[0].ore_stored += 1
+		return
+	if containers.size() == 0:
+		var inst : StaticBody2D = CONTAINER.instantiate()
+		add_child(inst)
+		inst.global_position = Vector2(global_position.x,global_position.y-6)

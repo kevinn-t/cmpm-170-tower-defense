@@ -1,17 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2dghsgfkop01"]
+[gd_scene load_steps=4 format=3 uid="uid://d2dghsgfkop01"]
 
 [ext_resource type="Texture2D" uid="uid://lx5saf7n26s2" path="res://Art/container.png" id="1_gc2lj"]
+[ext_resource type="Script" uid="uid://h7gr6s0k442g" path="res://Scripts/ore_container.gd" id="1_r4cle"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4rud1"]
 radius = 6.0
 
 [node name="Container" type="StaticBody2D" groups=["container"]]
+z_index = 1
 y_sort_enabled = true
+script = ExtResource("1_r4cle")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["container"]]
 texture = ExtResource("1_gc2lj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+[node name="Dummy" type="CollisionShape2D" parent="." groups=["container"]]
 shape = SubResource("CircleShape2D_4rud1")
-disabled = true

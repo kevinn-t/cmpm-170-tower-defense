@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://digijb3eflvbs"]
+[gd_scene load_steps=4 format=3 uid="uid://digijb3eflvbs"]
 
 [ext_resource type="Script" uid="uid://bu4i8o8xtb7lq" path="res://Scripts/ore_producer.gd" id="1_0n8n4"]
 [ext_resource type="PackedScene" uid="uid://6bbjxmbvawxa" path="res://Prefabs/Previews/drill_sprite.tscn" id="2_07swf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07swf"]
+size = Vector2(33, 24)
 
 [node name="Drill" type="StaticBody2D"]
 y_sort_enabled = true
@@ -10,12 +13,19 @@ script = ExtResource("1_0n8n4")
 [node name="Sprite2D" parent="." instance=ExtResource("2_07swf")]
 position = Vector2(0, -2)
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="Dummy" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
 disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Depot Check Area" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Depot Check Area"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_07swf")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
