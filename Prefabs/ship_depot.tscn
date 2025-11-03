@@ -8,6 +8,11 @@
 [node name="Ship Depot" type="StaticBody2D" groups=["ship_depot"]]
 y_sort_enabled = true
 script = ExtResource("1_ierel")
+ore_stored = null
+max_ore_stored = null
+workers = null
+max_workers = null
+integrity = null
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_qpmyw")]
 
@@ -26,5 +31,7 @@ z_index = 10
 y_sort_enabled = true
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_qpmyw")
+
+[node name="Route" type="Line2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

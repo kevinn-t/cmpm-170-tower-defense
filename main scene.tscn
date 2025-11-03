@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://daa10ieakewou"]
+[gd_scene load_steps=19 format=4 uid="uid://daa10ieakewou"]
 
 [ext_resource type="PackedScene" uid="uid://xuoh0gxe3ly5" path="res://Prefabs/city_center.tscn" id="1_0afw7"]
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="7_aqyhw"]
 [ext_resource type="Script" uid="uid://l6kpnfpk0r4" path="res://Scripts/game_manager.gd" id="8_18xev"]
 [ext_resource type="PackedScene" uid="uid://cbsn06bvv4s7i" path="res://Prefabs/habitat.tscn" id="9_c1o4b"]
-[ext_resource type="Script" uid="uid://h7gr6s0k442g" path="res://Scripts/ore_container.gd" id="10_7fvey"]
 [ext_resource type="PackedScene" uid="uid://d2dghsgfkop01" path="res://Prefabs/container.tscn" id="10_neqfu"]
 [ext_resource type="Script" uid="uid://cy6epkvluaqq0" path="res://Scripts/cursor.gd" id="11_4rud1"]
 [ext_resource type="Script" uid="uid://b84naho2s6x0q" path="res://Scripts/builder.gd" id="14_aovjg"]
@@ -79,6 +78,9 @@ position = Vector2(14, -4)
 zoom = Vector2(2.11, 2.11)
 script = ExtResource("3_ohk57")
 
+[node name="Builder" type="Node2D" parent="."]
+script = ExtResource("14_aovjg")
+
 [node name="Cursor" type="Node2D" parent="."]
 position = Vector2(64, -32)
 script = ExtResource("11_4rud1")
@@ -91,15 +93,8 @@ texture = SubResource("AtlasTexture_neqfu")
 [node name="Units" type="Node2D" parent="."]
 
 [node name="Ship" parent="Units" node_paths=PackedStringArray("home") instance=ExtResource("5_18xev")]
-y_sort_enabled = true
 rotation = 0.5235988
 home = NodePath("../../Buildings/Ship Depot")
-
-[node name="Container" parent="Units" instance=ExtResource("10_neqfu")]
-z_index = -1
-position = Vector2(-5, 8.660254)
-rotation = 0.5235988
-script = ExtResource("10_7fvey")
 
 [node name="Buildings" type="Node2D" parent="."]
 
@@ -112,8 +107,19 @@ position = Vector2(64, 0)
 [node name="Launcher" parent="Buildings" instance=ExtResource("3_sgb2t")]
 position = Vector2(128, 8)
 
-[node name="Ship Depot" parent="Buildings" instance=ExtResource("4_aqyhw")]
+[node name="Ship Depot" parent="Buildings" node_paths=PackedStringArray("destination") instance=ExtResource("4_aqyhw")]
 position = Vector2(80, 8)
+ore_stored = 1
+max_ore_stored = 10
+workers = 1
+max_workers = 2
+destination = NodePath("../City Center")
+integrity = 100
+
+[node name="Container" parent="Buildings/Ship Depot" instance=ExtResource("10_neqfu")]
+z_index = -1
+position = Vector2(-85, 0.6602535)
+rotation = 0.5235988
 
 [node name="Habitat" parent="Buildings" instance=ExtResource("9_c1o4b")]
 position = Vector2(-48, 24)
@@ -137,6 +143,3 @@ layout_mode = 2
 [node name="Button" type="Button" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer"]
 layout_mode = 2
 text = "Unselect"
-
-[node name="Builder" type="Node2D" parent="."]
-script = ExtResource("14_aovjg")

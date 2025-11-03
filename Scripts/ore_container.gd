@@ -1,3 +1,4 @@
+class_name MatContainer
 extends StaticBody2D
 
 # needs to start with 1 because depots check for an existing containter & +1 ot it
