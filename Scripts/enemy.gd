@@ -14,6 +14,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	_get_nearest_target()
+	
 func _physics_process(_delta: float) -> void:
 	if (target != null):
 		var direction = (target.position - position).normalized()
@@ -27,3 +28,8 @@ func _get_nearest_target():
 		if (distance < minDistance):
 			minDistance = distance
 			target = building
+
+func take_damage(dmg: float):
+	health -= dmg
+	if (health <= 0):
+		queue_free()
