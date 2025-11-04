@@ -12,6 +12,7 @@ var buildings = []
 var minDistance = INF
 
 func _ready() -> void:
+	super()
 	_get_nearest_target()
 	for c in get_children():
 		if c is Gun:
@@ -66,7 +67,7 @@ func _get_nearest_target():
 			target = building
 
 func _physics_process(_delta: float) -> void:
-	
+	super(_delta)
 	eval_state()
 	if not nav.is_navigation_finished():
 		var direction: Vector2 = global_position.direction_to(nav.get_next_path_position())

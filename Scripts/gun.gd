@@ -5,8 +5,7 @@ class_name Gun
 
 var bulletParent : Node2D
 var target : Node2D = null
-var damage : int = 5
-
+@export var damage : int = 5
 @export var bullet_speed = 500
 
 const BULLET = preload("res://Prefabs/bullet.tscn")
@@ -20,8 +19,11 @@ func set_firing(firing : bool = true):
 		
 
 func fire():
-	if target == null or bulletParent == null:
+	if target == null:
 		#print("null target or null parent")
+		return
+	if bulletParent == null:
+		print("SET THE BULLET PARENT IN ", get_parent())
 		return
 	#print("Gun fired at ", target)
 	var dir = (target.global_position - global_position).normalized()

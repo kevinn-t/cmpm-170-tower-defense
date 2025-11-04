@@ -1,6 +1,7 @@
 class_name Building
 extends StaticBody2D
 
+@export var team : int = 0
 @export var max_integrity : int = 100 
 @export var integrity : int = 100 # hit points
 
@@ -25,7 +26,7 @@ func hit(attacker : Gun):
 	integrity -= attacker.damage
 	if integrity <= 0:
 		onDestroyed.emit()
-		queue_free()
+		call_deferred("queue_free")
 	else:
 		onHit.emit()
 

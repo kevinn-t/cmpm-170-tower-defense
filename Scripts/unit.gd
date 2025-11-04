@@ -1,6 +1,8 @@
 class_name Unit
 extends CharacterBody2D
 
+@export var team : int = 0
+
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 # set move speed on the nav agent
 
@@ -47,7 +49,7 @@ func make_hp_bar():
 	health_bar.rotation = rotation * -1
 
 const EXPLOSION = preload("res://Prefabs/explosion.tscn")
-func explosion(explosion_iterations : int = 5, explosion_radius : float = 0):
+func explosion(explosion_iterations : int = 2, explosion_radius : float = 20):
 	for i in range(explosion_iterations):
 		var inst : Node2D = EXPLOSION.instantiate()
 		add_sibling(inst)

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1ityixm8ohp7"]
+[gd_scene load_steps=5 format=3 uid="uid://bgahk4752h6c2"]
 
 [ext_resource type="Script" uid="uid://buartb70omyqa" path="res://Scripts/turret.gd" id="1_ru586"]
 [ext_resource type="PackedScene" uid="uid://dbi5cyrhaxq0v" path="res://Prefabs/Previews/turret.tscn" id="1_s6tqq"]
+[ext_resource type="PackedScene" uid="uid://bv3jw0xt10wxi" path="res://Prefabs/gun.tscn" id="3_a38va"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a38va"]
+radius = 113.004425
 
 [node name="Turret" type="StaticBody2D" groups=["turret"]]
 script = ExtResource("1_ru586")
@@ -11,9 +15,7 @@ position = Vector2(2, -8)
 offset = Vector2(0, 0)
 
 [node name="Dummy" type="CollisionPolygon2D" parent="."]
-visible = false
 polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
-disabled = true
 
 [node name="Damage Radius" type="Area2D" parent="."]
 visible = false
@@ -23,5 +25,22 @@ polygon = PackedVector2Array(0, -40, 80, 0, 0, 40, -80, 0)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Gun" parent="." instance=ExtResource("3_a38va")]
+position = Vector2(0, 1)
+
+[node name="Gun2" parent="." instance=ExtResource("3_a38va")]
+position = Vector2(8, -6)
+
+[node name="Gun3" parent="." instance=ExtResource("3_a38va")]
+position = Vector2(-8, -6)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_a38va")
+debug_color = Color(0.64600784, 0.4283531, 0.7779267, 0.41960785)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

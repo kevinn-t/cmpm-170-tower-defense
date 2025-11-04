@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cbsn06bvv4s7i" path="res://Prefabs/habitat.tscn" id="9_c1o4b"]
 [ext_resource type="PackedScene" uid="uid://d2dghsgfkop01" path="res://Prefabs/container.tscn" id="10_neqfu"]
 [ext_resource type="Script" uid="uid://cy6epkvluaqq0" path="res://Scripts/cursor.gd" id="11_4rud1"]
-[ext_resource type="PackedScene" path="res://Prefabs/turret.tscn" id="14_52ei1"]
+[ext_resource type="PackedScene" uid="uid://bgahk4752h6c2" path="res://Prefabs/turret.tscn" id="14_52ei1"]
 [ext_resource type="Script" uid="uid://b84naho2s6x0q" path="res://Scripts/builder.gd" id="14_aovjg"]
 [ext_resource type="Script" uid="uid://dcfh5kofkok3d" path="res://Scripts/enemy_spawner.gd" id="15_v7vy4"]
 [ext_resource type="Texture2D" uid="uid://bepxf3r4002oq" path="res://icon.svg" id="16_v7vy4"]
@@ -130,7 +130,10 @@ rotation = 0.5235988
 position = Vector2(-48, 24)
 
 [node name="Turret" parent="Buildings" instance=ExtResource("14_52ei1")]
-position = Vector2(48, -71)
+position = Vector2(56, -64)
+
+[node name="Turret2" parent="Buildings" instance=ExtResource("14_52ei1")]
+position = Vector2(250, -10)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -151,9 +154,6 @@ layout_mode = 2
 [node name="Button" type="Button" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer"]
 layout_mode = 2
 text = "Unselect"
-
-[node name="Enemy" parent="." instance=ExtResource("14_52ei1")]
-position = Vector2(250, -10)
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(227, 88)
