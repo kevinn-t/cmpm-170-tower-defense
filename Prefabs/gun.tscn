@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv3jw0xt10wxi"]
+
+[ext_resource type="Texture2D" uid="uid://chfvxciju13wb" path="res://Art/turret.png" id="1_3se71"]
+[ext_resource type="Script" uid="uid://dw2y3n13gmcg7" path="res://Scripts/gun.gd" id="1_26ca0"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_26ca0")
+
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Turret" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+rotation = 1.5707964
+texture = ExtResource("1_3se71")
+
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

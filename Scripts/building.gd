@@ -11,13 +11,28 @@ signal onDelivery(ore)
 func get_texture() -> Texture2D:
 	return $Sprite2D.texture
 
-func hit(attacker : CharacterBody2D):# not character, unit
+func hit(attacker : Gun):
 	integrity -= attacker.damage
 	if integrity <= 0:
 		onDestroyed.emit()
 		queue_free()
 	else:
 		onHit.emit()
+
+func _ready() -> void:
+	onHit.connect(explosion)
+
+const EXPLOSION = preload("res://Prefabs/explosion.tscn")
+func explosion(explosion_iterations : int = 5, explosion_radius : float = 200):
+	for i in range(explosion_iterations):
+		var inst : Node2D = EXPLOSION.instantiate()
+		add_sibling(inst)
+		
+		var randCircle = Vector2(randfn(0.0,1.0),randfn(0.0,1.0)).normalized()
+		if randCircle.length()>1:
+			randCircle.normalized()
+			
+		inst.global_position = global_position + randCircle * explosion_radius
 
 
 const CONTAINER = preload("res://Prefabs/container.tscn")

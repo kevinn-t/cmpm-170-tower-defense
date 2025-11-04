@@ -6,7 +6,6 @@ extends CharacterBody2D
 
 @export var home : TransportShipDepot
 
-
 @export var my_container : MatContainer 
 func load_container(container : MatContainer):
 	container.get_parent().my_container = null

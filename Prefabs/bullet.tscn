@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d22vxavb3gd1o"]
+
+[ext_resource type="Texture2D" uid="uid://dllwgqnfpobko" path="res://Art/bullet.png" id="1_0oen4"]
+[ext_resource type="Script" uid="uid://cwykhfqt0pnwy" path="res://Scripts/bullet.gd" id="1_m4f65"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_m4f65"]
+a = Vector2(0, -4)
+b = Vector2(0, 4)
+
+[node name="bullet" type="RigidBody2D"]
+script = ExtResource("1_m4f65")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_m4f65")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0oen4")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
