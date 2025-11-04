@@ -172,4 +172,5 @@ texture = ExtResource("16_v7vy4")
 
 [node name="Bullets" type="Node2D" parent="."]
 
+[connection signal="onClick" from="Cursor" to="Buildings/Ship Depot" method="_on_cursor_on_click"]
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]

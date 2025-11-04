@@ -56,7 +56,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = direction
 	else:
 		velocity = Vector2.ZERO
-	print("vel " + str(velocity))
+	#print("vel " + str(velocity))
 	nav.set_velocity(velocity * nav.max_speed)
 	rotation = atan2(velocity.y, velocity.x)
 	
@@ -78,6 +78,6 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
-	print("Safe velocity " + str(safe_velocity))
+	#print("Safe velocity " + str(safe_velocity))
 	move_and_slide()
 	pass

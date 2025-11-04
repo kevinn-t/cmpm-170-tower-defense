@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ducstlfo2dkgg" path="res://Prefabs/smoke.tscn" id="3_ftk6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07swf"]
-size = Vector2(33, 24)
+size = Vector2(35, 24)
 
 [node name="Drill" type="StaticBody2D" groups=["drill"]]
 y_sort_enabled = true
@@ -15,7 +15,6 @@ script = ExtResource("1_0n8n4")
 position = Vector2(0, -2)
 
 [node name="Dummy" type="CollisionPolygon2D" parent="."]
-visible = false
 polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
 disabled = true
 
@@ -23,7 +22,6 @@ disabled = true
 autostart = true
 
 [node name="Depot Check Area" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Depot Check Area"]
 position = Vector2(0, -2)
