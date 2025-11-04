@@ -11,10 +11,18 @@ var damage : int = 5
 
 const BULLET = preload("res://Prefabs/bullet.tscn")
 
+func set_firing(firing : bool = true):
+	if firing:
+		shoot_cooldown.start()
+	else:
+		shoot_cooldown.stop()
+		
+
 func fire():
 	if target == null or bulletParent == null:
 		#print("null target or null parent")
 		return
+	print("Gun fired at ", target)
 	var dir = (target.global_position - global_position).normalized()
 	var inst : Bullet = BULLET.instantiate()
 	bulletParent.add_child(inst)

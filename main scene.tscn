@@ -160,7 +160,7 @@ position = Vector2(316, -6)
 script = ExtResource("15_v7vy4")
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]
-wait_time = 2.0
+wait_time = 4.0
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemySpawner"]
@@ -169,5 +169,7 @@ scale = Vector2(0.14, 0.14)
 texture = ExtResource("16_v7vy4")
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Bullets" type="Node2D" parent="."]
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
