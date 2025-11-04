@@ -1,12 +1,22 @@
 class_name Building
 extends StaticBody2D
 
+@export var max_integrity : int = 100 
 @export var integrity : int = 100 # hit points
 
 signal onHit()
 signal onDestroyed()
+@warning_ignore("unused_signal")
 signal onBuilt()
 signal onDelivery(ore)
+
+const HEALTH_BAR = preload("res://Prefabs/UI/health_bar.tscn")
+func make_hp_bar():
+	var inst : HealthBar = HEALTH_BAR.instantiate()
+	add_child(inst)
+	onHit.connect(inst.refresh)
+	inst.refresh()
+	
 
 func get_texture() -> Texture2D:
 	return $Sprite2D.texture
@@ -21,9 +31,10 @@ func hit(attacker : Gun):
 
 func _ready() -> void:
 	onHit.connect(explosion)
+	make_hp_bar()
 
 const EXPLOSION = preload("res://Prefabs/explosion.tscn")
-func explosion(explosion_iterations : int = 5, explosion_radius : float = 20):
+func explosion(explosion_iterations : int = 2, explosion_radius : float = 20):
 	for i in range(explosion_iterations):
 		var inst : Node2D = EXPLOSION.instantiate()
 		add_sibling(inst)

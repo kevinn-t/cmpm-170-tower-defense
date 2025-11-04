@@ -13,6 +13,7 @@ func load_container(container : MatContainer):
 	my_container = container
 
 
+@export var max_integrity : int = 100 
 @export var integrity : int = 100 # hit points
 
 signal onHit()
@@ -31,6 +32,19 @@ func hit(attacker : Gun):
 
 func _ready() -> void:
 	onHit.connect(explosion)
+	make_hp_bar()
+
+func _physics_process(_delta: float) -> void:
+	health_bar.rotation = rotation * -1
+
+const HEALTH_BAR = preload("res://Prefabs/UI/health_bar.tscn")
+var health_bar : HealthBar
+func make_hp_bar():
+	health_bar = HEALTH_BAR.instantiate()
+	add_child(health_bar)
+	onHit.connect(health_bar.refresh)
+	health_bar.refresh()
+	health_bar.rotation = rotation * -1
 
 const EXPLOSION = preload("res://Prefabs/explosion.tscn")
 func explosion(explosion_iterations : int = 5, explosion_radius : float = 0):

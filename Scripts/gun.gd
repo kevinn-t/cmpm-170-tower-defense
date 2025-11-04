@@ -23,7 +23,7 @@ func fire():
 	if target == null or bulletParent == null:
 		#print("null target or null parent")
 		return
-	print("Gun fired at ", target)
+	#print("Gun fired at ", target)
 	var dir = (target.global_position - global_position).normalized()
 	var inst : Bullet = BULLET.instantiate()
 	inst.add_collision_exception_with(get_parent())

@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bypjbaojskh0g"]
+[gd_scene load_steps=3 format=3 uid="uid://bypjbaojskh0g"]
 
 [ext_resource type="Texture2D" uid="uid://b1ect8li1j7w6" path="res://Art/white.png" id="1_r66v8"]
+[ext_resource type="Script" uid="uid://qwx2o47wvfwj" path="res://Scripts/health_bar.gd" id="1_yg76w"]
 
 [node name="HealthBar" type="Node2D"]
+z_index = 3
+script = ExtResource("1_yg76w")
 
 [node name="Bar" type="TextureProgressBar" parent="."]
+z_index = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
