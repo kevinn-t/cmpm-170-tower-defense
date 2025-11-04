@@ -68,6 +68,7 @@ camera_pan={
 
 2d_physics/layer_1="buildings"
 2d_physics/layer_2="units"
+2d_physics/layer_3="containers"
 2d_physics/layer_5="bullets"
 
 [rendering]

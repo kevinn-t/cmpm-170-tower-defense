@@ -10,6 +10,8 @@ radius = 6.0
 [node name="Container" type="StaticBody2D" groups=["container"]]
 z_index = 1
 y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_r4cle")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["container"]]

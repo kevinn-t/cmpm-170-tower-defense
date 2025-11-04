@@ -56,13 +56,16 @@ func _physics_process(_delta: float) -> void:
 		velocity = direction
 	else:
 		velocity = Vector2.ZERO
-	#print("vel " + str(velocity))
+	print("vel " + str(velocity))
 	nav.set_velocity(velocity * nav.max_speed)
 	rotation = atan2(velocity.y, velocity.x)
 	
 	$Status.text = str(state_flavor_text[current_state]) + "\n" + str(nearHome)
 	$Status.global_position = global_position + Vector2(-$Status.size.x * $Status.scale.x * 0.5,10)
 	$Status.rotation = rotation * -1
+	
+	#velocity = nav.velocity
+	#move_and_slide()
 
 func _mouse_enter() -> void:
 	$Status.visible = true
@@ -75,5 +78,6 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
-	#print("Safe velocity " + str(safe_velocity))
+	print("Safe velocity " + str(safe_velocity))
 	move_and_slide()
+	pass
