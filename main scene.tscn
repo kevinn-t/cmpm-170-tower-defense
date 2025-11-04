@@ -110,7 +110,7 @@ position = Vector2(176, -1)
 
 [node name="Ship Depot" parent="Buildings" node_paths=PackedStringArray("destination") instance=ExtResource("4_aqyhw")]
 position = Vector2(80, 8)
-destination = NodePath("../Launcher")
+destination = NodePath("../City Center")
 
 [node name="Container" parent="Buildings/Ship Depot" instance=ExtResource("10_neqfu")]
 z_index = -1

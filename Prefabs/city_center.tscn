@@ -14,3 +14,5 @@ position = Vector2(0, -8)
 visible = false
 polygon = PackedVector2Array(32, 0, 0, -16, -32, 0, 0, 16)
 disabled = true
+
+[connection signal="onDelivery" from="." to="." method="_on_delivery"]
