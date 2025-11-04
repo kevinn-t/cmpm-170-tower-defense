@@ -4,5 +4,6 @@ var game_manager : Node
 
 @onready var gm : GameManager = $"../.."
 
-func _on_delivery(ore: Variant) -> void:
-	gm.stored["ore"] += ore
+func _on_delivery() -> void:
+	pass
+	#gm.stored["ore"] = add_storages(gm.stored, delivery)

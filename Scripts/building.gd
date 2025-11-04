@@ -1,6 +1,32 @@
 class_name Building
 extends StaticBody2D
 
+@export var stored : Dictionary = {
+	"ore" = 0
+}
+@export var capacity : int = 10
+
+func add_storages(a : Dictionary, b : Dictionary) -> Dictionary:
+	var c : Dictionary = a.duplicate()
+	for k in b.keys():
+		if c.has(k):
+			c[k] += b[k]
+	return c
+
+# moves b into my storage, returns b after done moving
+func unload_storage_into(b : Dictionary) -> Dictionary:
+	for k in b.keys():
+		if stored.has(k):
+			var room_left = capacity - stored[k]
+			var moved = min(b[k], room_left)
+			stored[k] += moved
+			b[k] -= moved
+		else:
+			var moved = min(b[k], capacity)
+			stored[k] = moved
+			b[k] -= moved
+	return b
+
 @export var team : int = 0
 @export var max_integrity : int = 100 
 @export var integrity : int = 100 # hit points
@@ -9,15 +35,26 @@ signal onHit()
 signal onDestroyed()
 @warning_ignore("unused_signal")
 signal onBuilt()
-signal onDelivery(ore)
+signal onDelivery()# delivered : Dictionary
+
+signal refreshUI()
+	
 
 const HEALTH_BAR = preload("res://Prefabs/UI/health_bar.tscn")
 func make_hp_bar():
 	var inst : HealthBar = HEALTH_BAR.instantiate()
 	add_child(inst)
 	onHit.connect(inst.refresh)
+	refreshUI.connect(inst.refresh)
 	inst.refresh()
-	
+
+const STORAGE_UI = preload("res://Prefabs/UI/storage_ui.tscn")
+func make_storage_ui():
+	var inst : StorageUI = STORAGE_UI.instantiate()
+	add_child(inst)
+	onDelivery.connect(inst.refresh)
+	refreshUI.connect(inst.refresh)
+	inst.refresh()
 
 func get_texture() -> Texture2D:
 	return $Sprite2D.texture
@@ -33,6 +70,7 @@ func hit(attacker : Gun):
 func _ready() -> void:
 	onHit.connect(explosion)
 	make_hp_bar()
+	make_storage_ui()
 
 const EXPLOSION = preload("res://Prefabs/explosion.tscn")
 func explosion(explosion_iterations : int = 2, explosion_chance : float = 0.2, explosion_radius : float = 20):
@@ -57,8 +95,10 @@ func recieve_delivery(container : MatContainer) -> void:
 	container.get_parent().my_container = null
 	container.reparent(self)
 	my_container = container
-	var ore = unload_then_destroy_container()
-	onDelivery.emit(ore)
+	#var s = unload_then_destroy_container()
+	#onDelivery.emit(s)
+	unload_then_destroy_container()
+	onDelivery.emit()
 	
 func hasContainer() -> bool:
 	return my_container != null
@@ -70,10 +110,11 @@ func make_container() -> MatContainer:
 	my_container = inst
 	return inst
 
-func unload_then_destroy_container() -> int:
-	var ore = my_container.ore_stored
+func unload_then_destroy_container():
+	#var s = my_container.stored
+	var _extra = unload_storage_into(my_container.stored)
 	destroy_container()
-	return ore
+	#return s
 
 func destroy_container() -> void:
 	my_container.queue_free()

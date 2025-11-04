@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://6bbjxmbvawxa"]
 
-[ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="1_n0jr1"]
+[ext_resource type="Texture2D" uid="uid://bsprv7j30oh62" path="res://Art/drill-Sheet.png" id="1_n0jr1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ftk6u"]
 atlas = ExtResource("1_n0jr1")
-region = Rect2(96, 64, 32, 28)
+region = Rect2(0, 0, 32, 32)
 
 [node name="Sprite2D" type="Sprite2D"]
 texture = SubResource("AtlasTexture_ftk6u")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://daa10ieakewou"]
+[gd_scene load_steps=23 format=4 uid="uid://daa10ieakewou"]
 
 [ext_resource type="PackedScene" uid="uid://xuoh0gxe3ly5" path="res://Prefabs/city_center.tscn" id="1_0afw7"]
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://disxuxh3oxbgs" path="res://Art/baseTile.png" id="6_sgb2t"]
 [ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="7_aqyhw"]
 [ext_resource type="Script" uid="uid://l6kpnfpk0r4" path="res://Scripts/game_manager.gd" id="8_18xev"]
+[ext_resource type="Texture2D" uid="uid://dr2ko05fgqpsa" path="res://Art/repair_ship.png" id="9_7bxi3"]
 [ext_resource type="PackedScene" uid="uid://cbsn06bvv4s7i" path="res://Prefabs/habitat.tscn" id="9_c1o4b"]
 [ext_resource type="PackedScene" uid="uid://d2dghsgfkop01" path="res://Prefabs/container.tscn" id="10_neqfu"]
 [ext_resource type="Script" uid="uid://cy6epkvluaqq0" path="res://Scripts/cursor.gd" id="11_4rud1"]
@@ -98,6 +99,7 @@ texture = SubResource("AtlasTexture_neqfu")
 [node name="Ship" parent="Units" node_paths=PackedStringArray("home") instance=ExtResource("5_18xev")]
 z_index = 0
 y_sort_enabled = false
+position = Vector2(-8, 23)
 rotation = 0.5235988
 home = NodePath("../../Buildings/Ship Depot")
 
@@ -105,6 +107,10 @@ home = NodePath("../../Buildings/Ship Depot")
 z_index = -1
 position = Vector2(-5, 8.660254)
 rotation = 0.5235988
+
+[node name="RepairShip" type="Sprite2D" parent="Units"]
+position = Vector2(168, 96)
+texture = ExtResource("9_7bxi3")
 
 [node name="Buildings" type="Node2D" parent="."]
 

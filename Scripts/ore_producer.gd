@@ -13,7 +13,8 @@ fill nearby depots
 * round robin
 '''
 
-# TODO make it so that smoke emission rate is determined by whether or not ore has been generated
+# TODO make it so that smoke emission rate is determined by whether or not ore has been generated,
+# if inactive show inactive sprite, else show normal sprite
 
 func _on_timer_timeout() -> void:
 	if (workers <= 0):
@@ -21,7 +22,7 @@ func _on_timer_timeout() -> void:
 	
 	# switch depot checking to use Depot Check Area
 	var nearby : Array[Node2D] = $"Depot Check Area".get_overlapping_bodies()
-	var depots : Array[StaticBody2D] = []
+	var depots : Array[Building] = []
 	
 	for building in nearby:
 		if building.is_in_group("ship_depot"):
@@ -30,7 +31,9 @@ func _on_timer_timeout() -> void:
 	if (index >= depots.size()):
 		index = 0
 	if (depots):
-		if (depots[index].ore_stored < depots[index].max_ore_stored):
-			depots[index].ore_stored += ore_per_second
+		if (depots[index].stored["ore"] < depots[index].capacity):
+			stored["ore"] += 1
+			stored = depots[index].unload_storage_into(stored)
 	index += 1
+	refreshUI.emit()
 	

@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://digijb3eflvbs"]
+[gd_scene load_steps=7 format=3 uid="uid://digijb3eflvbs"]
 
 [ext_resource type="Script" uid="uid://bu4i8o8xtb7lq" path="res://Scripts/ore_producer.gd" id="1_0n8n4"]
 [ext_resource type="PackedScene" uid="uid://6bbjxmbvawxa" path="res://Prefabs/Previews/drill_sprite.tscn" id="2_07swf"]
+[ext_resource type="Texture2D" uid="uid://bsprv7j30oh62" path="res://Art/drill-Sheet.png" id="3_2s1x0"]
 [ext_resource type="PackedScene" uid="uid://ducstlfo2dkgg" path="res://Prefabs/smoke.tscn" id="3_ftk6u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoi8s"]
+atlas = ExtResource("3_2s1x0")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07swf"]
 size = Vector2(33, 24)
@@ -13,6 +18,11 @@ script = ExtResource("1_0n8n4")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_07swf")]
 position = Vector2(0, -2)
+
+[node name="inactive" parent="." instance=ExtResource("2_07swf")]
+visible = false
+position = Vector2(0, -2)
+texture = SubResource("AtlasTexture_xoi8s")
 
 [node name="Dummy" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -30,5 +40,7 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_07swf")
 
 [node name="Smoke" parent="." instance=ExtResource("3_ftk6u")]
+z_index = 1
+position = Vector2(0, -7)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
