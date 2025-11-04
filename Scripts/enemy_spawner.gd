@@ -5,6 +5,7 @@ extends Node2D
 
 func _ready() -> void:
 	spawn_enemy()
+	$Timer.stop() # temporary just spawn 1 and stop
 
 func _on_timer_timeout() -> void:
 	spawn_enemy()

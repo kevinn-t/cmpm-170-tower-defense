@@ -41,6 +41,7 @@ func fire_guns(yes : bool):
 		if c is Gun:
 			if yes:
 				c.target = target
+				#c.fire()
 			else:
 				c.target = null
 			c.set_firing(yes)

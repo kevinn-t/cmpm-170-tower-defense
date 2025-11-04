@@ -156,7 +156,7 @@ text = "Unselect"
 position = Vector2(250, -10)
 
 [node name="EnemySpawner" type="Node2D" parent="."]
-position = Vector2(316, -6)
+position = Vector2(227, 88)
 script = ExtResource("15_v7vy4")
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]

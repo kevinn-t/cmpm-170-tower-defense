@@ -64,6 +64,12 @@ camera_pan={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="buildings"
+2d_physics/layer_2="units"
+2d_physics/layer_5="bullets"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

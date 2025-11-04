@@ -13,7 +13,8 @@ const BULLET = preload("res://Prefabs/bullet.tscn")
 
 func set_firing(firing : bool = true):
 	if firing:
-		shoot_cooldown.start()
+		if shoot_cooldown.is_stopped():
+			shoot_cooldown.start()
 	else:
 		shoot_cooldown.stop()
 		
@@ -25,9 +26,11 @@ func fire():
 	print("Gun fired at ", target)
 	var dir = (target.global_position - global_position).normalized()
 	var inst : Bullet = BULLET.instantiate()
+	inst.add_collision_exception_with(get_parent())
 	bulletParent.add_child(inst)
 	inst.gunParent = self
-	inst.velocity = dir * bullet_speed
+	inst.global_position = global_position
+	inst.linear_velocity = dir * bullet_speed
 	rotation = atan2(dir.y, dir.x)
 	inst.rotation = atan2(dir.y, dir.x)
 

@@ -10,7 +10,6 @@ script = ExtResource("1_ierel")
 [node name="Sprite2D" parent="." instance=ExtResource("2_qpmyw")]
 
 [node name="Dummy" type="CollisionPolygon2D" parent="."]
-visible = false
 polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
 
 [node name="Timer" type="Timer" parent="."]

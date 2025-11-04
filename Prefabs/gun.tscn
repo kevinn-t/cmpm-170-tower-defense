@@ -8,7 +8,6 @@ script = ExtResource("1_26ca0")
 
 [node name="ShootCooldown" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
 
 [node name="Turret" type="Sprite2D" parent="."]
 position = Vector2(2, 0)

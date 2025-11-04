@@ -4,6 +4,7 @@ class_name Bullet
 var gunParent : Gun
 
 func _on_body_entered(body: Node) -> void:
+	print("bullet hit " + body.name)
 	if body.has_method("hit"):
 		body.hit(gunParent)
 	queue_free()
