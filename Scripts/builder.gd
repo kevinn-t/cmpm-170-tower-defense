@@ -10,9 +10,11 @@ var brush = null
 
 @onready var previewInstanceParent : Node2D = $"../Cursor/PreviewParent"
 const BUILDING_BUTTON = preload("res://Prefabs/UI/building_button.tscn")
-@onready var unitParent : Node2D = $"Units"
+@onready var unitParent : Node2D = $"../Units"
 @onready var buildingsParent : Node2D = $"../Buildings"
 @onready var buildingUIButtonParent : VBoxContainer = $"../UI/VBoxContainer/FoldableContainer/VBoxContainer"
+
+@export var clearBrushAfterBuild : bool = true
 
 func _ready() -> void:
 	await gm.ready
@@ -47,6 +49,8 @@ func build(buildingName : String, pos : Vector2):
 	building.onBuilt.emit()
 	updateUI()
 	print("built ", building, " ", building.global_position)
+	if clearBrushAfterBuild:
+		resetBuildingBrush()
 
 func populatePreviews() -> void:
 	for b in gm.buildingInfo:

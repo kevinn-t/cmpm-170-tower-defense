@@ -1,15 +1,12 @@
 class_name Building
 extends StaticBody2D
 
-@export var buildCost : Dictionary = {
-	"ore" : 3,
-	"money" : 0
-}
 @export var integrity : int = 100 # hit points
 
 signal onHit()
 signal onDestroyed()
 signal onBuilt()
+signal onDelivery(ore)
 
 func get_texture() -> Texture2D:
 	return $Sprite2D.texture
@@ -22,10 +19,32 @@ func hit(attacker : CharacterBody2D):# not character, unit
 	else:
 		onHit.emit()
 
-func costString() -> String:
-	#return str(buildCost)
-	var s = ""
-	for k in buildCost.keys():
-		if buildCost[k] > 0:
-			s+= str(buildCost[k]) + " " + str(k) + " "
-	return s
+
+const CONTAINER = preload("res://Prefabs/container.tscn")
+@export var my_container : MatContainer 
+
+func recieve_delivery(container : MatContainer) -> void:
+	container.get_parent().my_container = null
+	container.reparent(self)
+	my_container = container
+	var ore = unload_then_destroy_container()
+	onDelivery.emit(ore)
+	
+func hasContainer() -> bool:
+	return my_container != null
+
+func make_container() -> MatContainer:
+	var inst : MatContainer = CONTAINER.instantiate()
+	add_child(inst)
+	inst.global_position = Vector2(global_position.x,global_position.y-6)
+	my_container = inst
+	return inst
+
+func unload_then_destroy_container() -> int:
+	var ore = my_container.ore_stored
+	destroy_container()
+	return ore
+
+func destroy_container() -> void:
+	my_container.queue_free()
+	my_container = null

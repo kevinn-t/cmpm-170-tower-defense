@@ -40,6 +40,10 @@ func _ready() -> void:
 	unitInfo = data["units"]
 	stored = data["starting_stored"]
 
+func _process(_delta: float) -> void:
+	$UI/VBoxContainer/Stored.text = "money: " + str(stored.money) + "\nOre: " + str(stored.ore)
+
+
 func subtractCost(cost : Dictionary) -> bool: # returns success
 	for key in cost.keys():
 		if stored.keys().has(key):
