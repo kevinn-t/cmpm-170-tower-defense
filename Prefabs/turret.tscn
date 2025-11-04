@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://buartb70omyqa" path="res://Scripts/turret.gd" id="1_ru586"]
 [ext_resource type="PackedScene" uid="uid://dbi5cyrhaxq0v" path="res://Prefabs/Previews/turret.tscn" id="1_s6tqq"]
 
-[node name="Turret" type="StaticBody2D"]
+[node name="Turret" type="StaticBody2D" groups=["turret"]]
 script = ExtResource("1_ru586")
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_s6tqq")]
@@ -11,10 +11,12 @@ position = Vector2(2, -8)
 offset = Vector2(0, 0)
 
 [node name="Dummy" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
 disabled = true
 
 [node name="Damage Radius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Damage Radius"]
 polygon = PackedVector2Array(0, -40, 80, 0, 0, 40, -80, 0)

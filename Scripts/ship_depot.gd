@@ -1,20 +1,6 @@
 class_name TransportShipDepot
 extends Building
 
-'''
-for some reason this is only working when childed under PreviewParent
-cuz inside of Buildings, this keeps spawning new containers even though
-theres already one
-
-my goal for this is to push ore into a container if detected
-if not, make a container
-
-BUT if you Play, go to Scene->Remote->GameManager->Buildings->Ship Depot
-you'll see a ton of @StaticBody's being made
-
-BUT you don't see it happening to the Ship Depot under PreviewParent
-'''
-
 @export var ore_stored : int = 1
 @export var max_ore_stored : int = 10
 @export var workers : int = 1
@@ -24,7 +10,6 @@ BUT you don't see it happening to the Ship Depot under PreviewParent
 const SHIP = preload("res://Prefabs/ship.tscn")
 
 @export var destination : Building
-
 
 func _ready() -> void:
 	onBuilt.connect(on_built)

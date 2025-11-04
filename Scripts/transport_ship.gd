@@ -4,17 +4,6 @@ extends Unit
 
 @export var package_attached : bool
 
-# store original depot for this ship
-# store package recipient
-
-# sit idle at its depot
-# if there is a package and it's full
-# 	child it
-#	start moving toward recipient
-# after delivered
-# 	come back and repeat
-
-# look at enums for state
 
 enum State { IDLE, TRANSPORTING, RETURNING }
 var current_state: State = State.IDLE
@@ -51,6 +40,7 @@ func _physics_process(_delta: float) -> void:
 				nav.target_position = home.global_position
 
 		State.TRANSPORTING:
+			my_container.global_position = global_position - Vector2(24,0)
 			if nav.is_navigation_finished():
 				home.destination.recieve_delivery(my_container)
 				current_state = State.RETURNING
@@ -65,7 +55,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = direction
 	else:
 		velocity = Vector2.ZERO
-	print("vel " + str(velocity))
+	#print("vel " + str(velocity))
 	nav.set_velocity(velocity * nav.max_speed)
 	rotation = atan2(velocity.y, velocity.x)
 	
@@ -84,5 +74,5 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
-	print("Safe velocity " + str(safe_velocity))
+	#print("Safe velocity " + str(safe_velocity))
 	move_and_slide()

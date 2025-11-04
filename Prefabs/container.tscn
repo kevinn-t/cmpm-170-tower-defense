@@ -16,3 +16,10 @@ texture = ExtResource("1_gc2lj")
 
 [node name="Dummy" type="CollisionShape2D" parent="." groups=["container"]]
 shape = SubResource("CircleShape2D_4rud1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -4.0
+offset_top = 5.0
+offset_right = 4.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 10
