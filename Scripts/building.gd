@@ -35,8 +35,11 @@ func _ready() -> void:
 	make_hp_bar()
 
 const EXPLOSION = preload("res://Prefabs/explosion.tscn")
-func explosion(explosion_iterations : int = 2, explosion_radius : float = 20):
+func explosion(explosion_iterations : int = 2, explosion_chance : float = 0.2, explosion_radius : float = 20):
 	for i in range(explosion_iterations):
+		var r = randf()
+		if r > explosion_chance:
+			return
 		var inst : Node2D = EXPLOSION.instantiate()
 		add_sibling(inst)
 		
