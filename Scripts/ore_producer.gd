@@ -13,6 +13,8 @@ fill nearby depots
 * round robin
 '''
 
+# TODO make it so that smoke emission rate is determined by whether or not ore has been generated
+
 func _on_timer_timeout() -> void:
 	if (workers <= 0):
 		return

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://jivqusd7xwo1"]
+[gd_scene load_steps=5 format=3 uid="uid://jivqusd7xwo1"]
 
 [ext_resource type="Script" uid="uid://014u54bmi76o" path="res://Scripts/transport_ship.gd" id="1_88h6h"]
 [ext_resource type="Texture2D" uid="uid://r1wyym74q2hw" path="res://Art/ship.png" id="2_88h6h"]
+[ext_resource type="Script" uid="uid://g2h5vmi5xsd2" path="res://Scripts/trail2D.gd" id="3_ba1si"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_88h6h"]
 radius = 14.0
@@ -18,6 +19,14 @@ script = ExtResource("1_88h6h")
 z_index = 1
 rotation = 1.5707964
 texture = ExtResource("2_88h6h")
+
+[node name="Line2D" type="Line2D" parent="Sprite2D"]
+position = Vector2(4.0000005, 10)
+rotation = -1.5707964
+points = PackedVector2Array(0, 0, -23, 0)
+width = 2.0
+default_color = Color(0.72156864, 0.8392157, 0.91764706, 1)
+script = ExtResource("3_ba1si")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_88h6h")

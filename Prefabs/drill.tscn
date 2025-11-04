@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://digijb3eflvbs"]
+[gd_scene load_steps=5 format=3 uid="uid://digijb3eflvbs"]
 
 [ext_resource type="Script" uid="uid://bu4i8o8xtb7lq" path="res://Scripts/ore_producer.gd" id="1_0n8n4"]
 [ext_resource type="PackedScene" uid="uid://6bbjxmbvawxa" path="res://Prefabs/Previews/drill_sprite.tscn" id="2_07swf"]
+[ext_resource type="PackedScene" uid="uid://ducstlfo2dkgg" path="res://Prefabs/smoke.tscn" id="3_ftk6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07swf"]
 size = Vector2(33, 24)
@@ -27,5 +28,7 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Depot Check Area"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_07swf")
+
+[node name="Smoke" parent="." instance=ExtResource("3_ftk6u")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
