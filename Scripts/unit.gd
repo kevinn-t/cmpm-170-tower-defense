@@ -18,6 +18,8 @@ func load_container(container : MatContainer):
 @export var max_integrity : int = 100 
 @export var integrity : int = 100 # hit points
 
+@export var turn_speed = 10
+
 signal onHit()
 signal onDestroyed()
 

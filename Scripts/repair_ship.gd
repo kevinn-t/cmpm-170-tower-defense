@@ -73,12 +73,12 @@ func _physics_process(delta: float) -> void:
 		State.IDLE:
 			pass
 		State.SEEKING:
-			rotation = atan2(velocity.y, velocity.x)
+			rotation = lerp_angle(rotation, atan2(velocity.y, velocity.x), turn_speed * delta)
 		State.RETURNING:
-			rotation = atan2(velocity.y, velocity.x)
+			rotation = lerp_angle(rotation, atan2(velocity.y, velocity.x), turn_speed * delta)
 		State.REPAIRING:
 			var dir = (target.global_position - global_position).normalized()
-			rotation = atan2(dir.y, dir.x)
+			rotation = lerp_angle(rotation, atan2(dir.y, dir.x), turn_speed * delta)
 	
 	super(delta)
 	

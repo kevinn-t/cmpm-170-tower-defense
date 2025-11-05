@@ -57,7 +57,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 	#print("vel " + str(velocity))
 	nav.set_velocity(velocity * nav.max_speed)
-	rotation = atan2(velocity.y, velocity.x)
+	rotation = lerp_angle(rotation, atan2(velocity.y, velocity.x), turn_speed * _delta)
 	
 	$Status.text = str(state_flavor_text[current_state]) + "\n" + str(nearHome)
 	$Status.global_position = global_position + Vector2(-$Status.size.x * $Status.scale.x * 0.5,10)
