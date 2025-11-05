@@ -6,6 +6,9 @@
 [node name="City Center" type="StaticBody2D" groups=["city_center"]]
 y_sort_enabled = true
 script = ExtResource("1_8neen")
+capacity = 100
+max_integrity = 500
+integrity = 500.0
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_ai34k")]
 position = Vector2(0, -8)

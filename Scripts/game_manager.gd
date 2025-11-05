@@ -2,10 +2,12 @@ class_name GameManager
 extends Node2D
 # goes on the root of the main scene
 
-@export var stored : Dictionary = {
-	"ore" = 10,
-	"money" = 50
-}
+@export var stored : Dictionary :
+	get:
+		return $"Buildings/City Center".stored
+	set(value):
+		$"Buildings/City Center".stored = value
+		$"Buildings/City Center".refreshUI.emit()
 
 @export var unemployed_population : int = 10
 @export var total_population : int = 10

@@ -117,6 +117,9 @@ home = NodePath("../../Buildings/Repair Home")
 
 [node name="City Center" parent="Buildings" instance=ExtResource("1_0afw7")]
 position = Vector2(-48, -18)
+stored = {
+&"ore": 10
+}
 
 [node name="Drill" parent="Buildings" instance=ExtResource("2_ux2rm")]
 position = Vector2(64, 0)
