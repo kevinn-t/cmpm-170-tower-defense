@@ -24,7 +24,7 @@ func _unhandled_input(event):
 			var results = physics_space.intersect_point(query)
 			
 			if (results.size() > 0):
-				print("clicked on" + str(results[0].collider))
+				#print("clicked on" + str(results[0].collider))
 				selected_building = results[0].collider
 				onClick.emit(results[0].collider)
 	

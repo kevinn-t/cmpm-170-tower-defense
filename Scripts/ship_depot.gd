@@ -9,12 +9,12 @@ extends Building
 const SHIP = preload("res://Prefabs/ship.tscn")
 
 @export var destination : Building
-var new_destination = CollisionObject2D
 @onready var selecting : bool = false
 
 func _ready() -> void:
 	onBuilt.connect(on_built)
 	$GUI.visible = false
+	$"../../Cursor".onClick.connect(on_any_click)
 
 func on_built():
 	pass
@@ -44,12 +44,7 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			# toggle entire thing
 			$GUI.visible = !$GUI.visible
 			# reset stuff
-			new_destination = null
-			selecting = false
-			$"GUI/Control/Set Dest Button".text = "Set Destination"
-			$GUI/Route.clear_points()
-			$GUI/Route.add_point(to_local(destination.global_position))
-			$GUI/Route.add_point(Vector2(0,0))
+			refresh_gui()
 
 
 func _on_repair_button_gui_input(event: InputEvent) -> void:
@@ -57,22 +52,22 @@ func _on_repair_button_gui_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			selecting = !selecting
 			$"GUI/Control/Set Dest Button".text = "Cancel" if selecting else "Set Destination"
-			# set new destination
-			if selecting and new_destination!=null:
-				destination = new_destination
-				new_destination = null
+			
+			refresh_gui()
 				
-				$GUI/Route.clear_points()
-				$GUI/Route.add_point(to_local(destination.global_position))
-				$GUI/Route.add_point(Vector2(0,0))
-				selecting = false
-				$"GUI/Control/Set Dest Button".text = "Set Destination"
-
-
-func _on_cursor_on_click(collider: CollisionObject2D) -> void:
-	new_destination = collider
+func on_any_click(new_destination):
+	print(selecting)
+	if selecting:
+		if new_destination != null:
+			destination = new_destination
+			selecting = false
+	refresh_gui()
 	
-# open depot gui
-# says set destination, selecting is false
-# click on button -> says cancel
-# click cancel / click on building / close gui -> set new_destination to null
+func refresh_gui():
+	$"GUI/Control/Set Dest Button".text = "Cancel" if selecting else "Set Destination"
+	$GUI/Route.clear_points()
+	$GUI/Route.add_point(to_local(destination.global_position))
+	$GUI/Route.add_point(Vector2(0,0))
+
+#func _on_cursor_on_click(collider: CollisionObject2D) -> void:
+	#new_destination = collider
