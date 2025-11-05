@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dml41df75scnh"]
+[gd_scene load_steps=4 format=3 uid="uid://dml41df75scnh"]
 
 [ext_resource type="Script" uid="uid://cao6f1elr876n" path="res://Scripts/ship_depot.gd" id="1_ierel"]
 [ext_resource type="PackedScene" uid="uid://riooch6ao270" path="res://Prefabs/Previews/ship_depot_sprite.tscn" id="2_qpmyw"]
+[ext_resource type="Texture2D" uid="uid://dqv4103k2w5on" path="res://Art/diamond.svg" id="3_oaqhv"]
 
 [node name="Ship Depot" type="StaticBody2D" groups=["ship_depot"]]
 y_sort_enabled = true
+collision_layer = 2
 script = ExtResource("1_ierel")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_qpmyw")]
@@ -15,6 +17,39 @@ polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Route" type="Line2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Dummy" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
+
+[node name="GUI" type="Node2D" parent="."]
+
+[node name="Diamond Indicator" type="Sprite2D" parent="GUI"]
+z_index = 2
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("3_oaqhv")
+
+[node name="Route" type="Line2D" parent="GUI"]
+z_index = 2
+width = 2.0
+default_color = Color(18.892157, 0, 0, 1)
+
+[node name="Control" type="Control" parent="GUI"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Set Dest Button" type="Button" parent="GUI/Control"]
+z_index = 2
+layout_mode = 0
+offset_left = -66.0
+offset_top = -82.0
+offset_right = 66.0
+offset_bottom = -50.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="gui_input" from="GUI/Control/Set Dest Button" to="." method="_on_repair_button_gui_input"]

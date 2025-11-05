@@ -10,7 +10,7 @@ atlas = ExtResource("3_2s1x0")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07swf"]
-size = Vector2(33, 24)
+size = Vector2(35, 24)
 
 [node name="Drill" type="StaticBody2D" groups=["drill"]]
 y_sort_enabled = true
@@ -31,7 +31,6 @@ polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
 autostart = true
 
 [node name="Depot Check Area" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Depot Check Area"]
 position = Vector2(0, -2)
