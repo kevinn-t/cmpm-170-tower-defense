@@ -2,6 +2,9 @@ class_name GameManager
 extends Node2D
 # goes on the root of the main scene
 
+# formatted "0,0" : StaticBody2D
+@export var all_buildings : Dictionary = {}
+
 @export var stored : Dictionary :
 	get:
 		return $"Buildings/City Center".stored
@@ -58,7 +61,3 @@ func subtractCost(cost : Dictionary) -> bool: # returns success
 			print("unrecognized key ", key)
 			return false
 	return true;
-
-
-func _on_timer_timeout() -> void:
-	pass # Replace with function body.

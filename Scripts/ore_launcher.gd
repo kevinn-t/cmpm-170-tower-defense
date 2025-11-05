@@ -1,11 +1,14 @@
 extends Building
 
 @export var money_per_ore : int = 1
-@export var workers : int = 1
-@export var max_workers : int = 4
-
 @onready var shipment_cooldown : Timer = $Timer
-@onready var gm : GameManager = $"../.."
+@onready var gm = $"../.."
+
+func _ready() -> void:
+	onBuilt.connect(on_built)
+
+func on_built()->void:
+	gm.all_buildings[grid_pos()] = self
 
 func _on_delivery() -> void:
 	try_launch()
@@ -35,7 +38,7 @@ const resource_sprites = {
 	"ore" : "res://Art/ore.png",
 	"money" : "res://Art/money.png"
 }
-func make_generated_particle(change : int, sprite : String):
+func make_generated_particle(_change : int, _sprite : String):
 	var inst = STORAGE_UI.instantiate()
 	add_child(inst)
 	#inst.get_node("Label").text = "+"+ str(change)

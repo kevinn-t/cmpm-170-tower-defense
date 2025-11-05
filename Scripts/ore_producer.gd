@@ -1,34 +1,30 @@
 extends Building
 
 @export var ore_per_second : int = 1
-@export var workers : int = 1
-@export var max_workers : int = 3
 @export var check_radius : int = 18
 var index : int = 0
+@onready var gm = $"../.."
 
-'''
-fill nearby depots 
-* every second
-* one by one
-* round robin
-'''
+func _ready() -> void:
+	onBuilt.connect(on_built)
+
+func on_built()->void:
+	gm.all_buildings[grid_pos()] = self
 
 # TODO make it so that smoke emission rate is determined by whether or not ore has been generated,
 # if inactive show inactive sprite, else show normal sprite
 
 func _on_timer_timeout() -> void:
-	if (workers <= 0):
-		return
+	#print(get_neighbors())
 	
-	# switch depot checking to use Depot Check Area
-	var nearby : Array[Node2D] = $"Depot Check Area".get_overlapping_bodies()
+	## switch depot checking to use Depot Check Area
+	#var nearby : Array[Node2D] = $"Depot Check Area".get_overlapping_bodies()
 	var depots : Array[Building] = []
-	print(nearby)
 	
-	for building in nearby:
+	for building : Building in get_neighbors():
 		if building.is_in_group("ship_depot"):
 			depots.append(building)
-
+	
 	if (index >= depots.size()):
 		index = 0
 	if (depots):

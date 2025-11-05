@@ -5,6 +5,7 @@ class_name Turret
 @export var interval : float = 1
 
 @onready var timer : Timer = $Timer
+@onready var gm = $"../.."
 
 func _process(_delta: float) -> void:
 	timer.wait_time = interval
@@ -24,6 +25,8 @@ func _ready() -> void:
 	for c in get_children():
 		if c is Gun:
 			c.bulletParent = bulletParent
+	onBuilt.connect(on_built)
+	
 func tryGetTarget() -> Node:
 	for b in $DetectionArea.get_overlapping_bodies():
 		if b.team != team:
@@ -37,3 +40,6 @@ func fire_guns(target : Node):
 			c.target = target
 			c.set_firing(target != null)
 			#print(target != null)
+			
+func on_built()->void:
+	gm.all_buildings[grid_pos()] = self

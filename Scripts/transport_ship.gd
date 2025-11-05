@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 			if not nearHome:
 				current_state = State.RETURNING
 				nav.target_position = home.global_position
-			elif home.hasContainer(): 
+			elif home.hasContainer() and home.destination: 
 				load_container(home.my_container)
 				current_state = State.TRANSPORTING
 				nav.target_position = home.destination.global_position
@@ -76,7 +76,7 @@ func _mouse_exit() -> void:
 func _on_navigation_agent_2d_navigation_finished() -> void:
 	pass # Replace with function body.
 
-func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+func _on_navigation_agent_2d_velocity_computed(_safe_velocity: Vector2) -> void:
 	#velocity = safe_velocity
 	##print("Safe velocity " + str(safe_velocity))
 	#move_and_slide()

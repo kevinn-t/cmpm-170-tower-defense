@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
 [ext_resource type="Script" uid="uid://dojrj0l83t746" path="res://Scripts/camera_controller.gd" id="3_ohk57"]
 [ext_resource type="PackedScene" uid="uid://bjuiop2xqasns" path="res://Prefabs/launcher.tscn" id="3_sgb2t"]
+[ext_resource type="PackedScene" uid="uid://dml41df75scnh" path="res://Prefabs/ship_depot.tscn" id="4_aqyhw"]
+[ext_resource type="PackedScene" uid="uid://jivqusd7xwo1" path="res://Prefabs/ship.tscn" id="5_18xev"]
 [ext_resource type="Texture2D" uid="uid://disxuxh3oxbgs" path="res://Art/baseTile.png" id="6_sgb2t"]
 [ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="7_aqyhw"]
 [ext_resource type="Script" uid="uid://l6kpnfpk0r4" path="res://Scripts/game_manager.gd" id="8_18xev"]
@@ -13,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://pf6bulsx2yxi" path="res://Prefabs/repair_home.tscn" id="15_7bxi3"]
 [ext_resource type="Script" uid="uid://dcfh5kofkok3d" path="res://Scripts/enemy_spawner.gd" id="15_v7vy4"]
 [ext_resource type="PackedScene" uid="uid://bcc2hse3nq2h5" path="res://Prefabs/repair_ship.tscn" id="16_lslek"]
-[ext_resource type="Script" uid="uid://dfufl7jti4iay" path="res://balls.gd" id="17_7bxi3"]
 [ext_resource type="Texture2D" uid="uid://ckhyprueg88jg" path="res://Art/enemy_flag.png" id="18_lslek"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_neqfu"]
@@ -63,9 +64,6 @@ sources/1 = SubResource("TileSetAtlasSource_18xev")
 atlas = ExtResource("7_aqyhw")
 region = Rect2(0, 96, 32, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lslek"]
-radius = 2.0
-
 [node name="GameManager" type="Node2D"]
 script = ExtResource("8_18xev")
 
@@ -97,6 +95,13 @@ texture = SubResource("AtlasTexture_neqfu")
 
 [node name="Units" type="Node2D" parent="."]
 
+[node name="Ship" parent="Units" node_paths=PackedStringArray("home") instance=ExtResource("5_18xev")]
+z_index = 0
+y_sort_enabled = false
+position = Vector2(-8, 23)
+rotation = 0.5235988
+home = NodePath("../../Buildings/Ship Depot")
+
 [node name="RepairShip" parent="Units" node_paths=PackedStringArray("home") instance=ExtResource("16_lslek")]
 position = Vector2(128, -51)
 home = NodePath("../../Buildings/Repair Home")
@@ -111,9 +116,20 @@ stored = {
 
 [node name="Drill" parent="Buildings" instance=ExtResource("2_ux2rm")]
 position = Vector2(64, 0)
+ore_per_second = null
+check_radius = null
+stored = null
+capacity = null
+team = null
+max_integrity = null
+integrity = null
 
 [node name="Launcher" parent="Buildings" instance=ExtResource("3_sgb2t")]
 position = Vector2(176, -1)
+
+[node name="Ship Depot" parent="Buildings" node_paths=PackedStringArray("destination") instance=ExtResource("4_aqyhw")]
+position = Vector2(80, 8)
+destination = NodePath("../City Center")
 
 [node name="Turret" parent="Buildings" instance=ExtResource("14_52ei1")]
 position = Vector2(56, -64)
@@ -160,10 +176,5 @@ texture = ExtResource("18_lslek")
 
 [node name="Bullets" type="Node2D" parent="."]
 
-[node name="kevin scratcchpad" type="StaticBody2D" parent="."]
-script = ExtResource("17_7bxi3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kevin scratcchpad"]
-shape = SubResource("CircleShape2D_lslek")
-
+[connection signal="onClick" from="Cursor" to="Buildings/Ship Depot" method="_on_cursor_on_click"]
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]

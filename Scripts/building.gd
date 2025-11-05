@@ -6,6 +6,30 @@ extends StaticBody2D
 }
 @export var capacity : int = 10
 
+@onready var _gm = $"../../"
+
+# nw = +x & se = -x
+# ne = -y & sw = +y 
+func grid_pos()->Vector2:
+	var pos = Vector2()
+	pos.x = global_position.x/32 + global_position.y/16
+	pos.y = global_position.x/-32 + global_position.y/16
+	return pos
+
+func get_neighbors()->Array[Building]:
+	var neighbors : Array[Building] = []
+	var cart_coords : Vector2 = grid_pos()
+	var neighbor_coords : Array[Vector2] = [
+		Vector2(cart_coords.x+1, cart_coords.y),
+		Vector2(cart_coords.x, cart_coords.y-1),
+		Vector2(cart_coords.x-1, cart_coords.y),
+		Vector2(cart_coords.x, cart_coords.y+1),
+	]
+	for coord in neighbor_coords:
+		if _gm.all_buildings.has(coord):
+			neighbors.append(_gm.all_buildings[coord])
+	return neighbors
+
 func add_storages(a : Dictionary, b : Dictionary) -> Dictionary:
 	var c : Dictionary = a.duplicate()
 	for k in b.keys():

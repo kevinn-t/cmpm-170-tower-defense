@@ -10,7 +10,7 @@ atlas = ExtResource("3_2s1x0")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07swf"]
-size = Vector2(35, 24)
+size = Vector2(37, 26)
 
 [node name="Drill" type="StaticBody2D" groups=["drill"]]
 y_sort_enabled = true
@@ -33,7 +33,7 @@ autostart = true
 [node name="Depot Check Area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Depot Check Area"]
-position = Vector2(0, -2)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_07swf")
 
 [node name="Smoke" parent="." instance=ExtResource("3_ftk6u")]

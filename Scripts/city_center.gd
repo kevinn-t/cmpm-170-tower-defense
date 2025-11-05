@@ -1,8 +1,12 @@
 extends Building
 
-var game_manager : Node
+@onready var gm = $"../.."
 
-@onready var gm : GameManager = $"../.."
+func _ready() -> void:
+	onBuilt.connect(on_built)
+	
+func on_built()->void:
+	gm.all_buildings[grid_pos()] = self
 
 func _on_delivery() -> void:
 	pass
