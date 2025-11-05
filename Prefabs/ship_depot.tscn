@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dml41df75scnh"]
+[gd_scene load_steps=6 format=3 uid="uid://dml41df75scnh"]
 
 [ext_resource type="Script" uid="uid://cao6f1elr876n" path="res://Scripts/ship_depot.gd" id="1_ierel"]
 [ext_resource type="PackedScene" uid="uid://riooch6ao270" path="res://Prefabs/Previews/ship_depot_sprite.tscn" id="2_qpmyw"]
+[ext_resource type="Texture2D" uid="uid://ngf8x83gaik2" path="res://Art/ship_homes-Sheet.png" id="3_532he"]
 [ext_resource type="Texture2D" uid="uid://dqv4103k2w5on" path="res://Art/diamond.svg" id="3_oaqhv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox7xa"]
+atlas = ExtResource("3_532he")
+region = Rect2(32, 0, 32, 32)
 
 [node name="Ship Depot" type="StaticBody2D" groups=["ship_depot"]]
 y_sort_enabled = true
@@ -10,6 +15,7 @@ collision_layer = 2
 script = ExtResource("1_ierel")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_qpmyw")]
+texture = SubResource("AtlasTexture_ox7xa")
 
 [node name="Dummy" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)

@@ -63,8 +63,8 @@ func _physics_process(_delta: float) -> void:
 	$Status.global_position = global_position + Vector2(-$Status.size.x * $Status.scale.x * 0.5,10)
 	$Status.rotation = rotation * -1
 	
-	#velocity = nav.velocity
-	#move_and_slide()
+	velocity = nav.velocity
+	move_and_slide()
 	super(_delta)
 
 func _mouse_enter() -> void:
@@ -77,7 +77,7 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 	pass # Replace with function body.
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
-	velocity = safe_velocity
-	#print("Safe velocity " + str(safe_velocity))
-	move_and_slide()
+	#velocity = safe_velocity
+	##print("Safe velocity " + str(safe_velocity))
+	#move_and_slide()
 	pass
