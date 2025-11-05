@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckpba7er6hfdb"]
+
+[ext_resource type="Script" uid="uid://cveqvxqph5fkd" path="res://Prefabs/UI/resource_generated.gd" id="1_e287m"]
+[ext_resource type="Texture2D" uid="uid://05ir0bgl6vkr" path="res://Art/money.png" id="3_q2iow"]
+
+[node name="Generated" type="Node2D"]
+z_index = 3
+script = ExtResource("1_e287m")
+
+[node name="Label" type="Label" parent="."]
+z_index = 3
+offset_left = -14.0
+offset_top = -7.0
+offset_right = -2.0
+offset_bottom = 7.0
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 10
+text = "+1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 3
+custom_minimum_size = Vector2(16, 16)
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 8.0
+texture = ExtResource("3_q2iow")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

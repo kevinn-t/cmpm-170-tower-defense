@@ -5,6 +5,7 @@ extends Building
 @export var max_workers : int = 2
 
 const SHIP = preload("res://Prefabs/ship.tscn")
+var my_ship : TransportShip
 
 @export var destination : Building
 @onready var selecting : bool = false
@@ -17,10 +18,10 @@ func _ready() -> void:
 func on_built():
 	pass
 	# create my ship
-	var inst : TransportShip = SHIP.instantiate()
-	$"../../Units".add_child(inst)
-	inst.global_position = global_position
-	inst.home = self
+	my_ship = SHIP.instantiate()
+	$"../../Units".add_child(my_ship)
+	my_ship.global_position = global_position
+	my_ship.home = self
 
 func _on_timer_timeout() -> void:
 	if (workers <= 0):
@@ -59,6 +60,7 @@ func on_any_click(new_destination):
 	if selecting:
 		if new_destination != null:
 			destination = new_destination
+			#my_ship.nav.target_position = destination.global_position
 			selecting = false
 	refresh_gui()
 	

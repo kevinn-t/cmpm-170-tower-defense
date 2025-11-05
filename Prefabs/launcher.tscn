@@ -42,7 +42,7 @@ animations = [{
 "duration": 0.4,
 "texture": SubResource("AtlasTexture_oi3ql")
 }],
-"loop": true,
+"loop": false,
 "name": &"launch",
 "speed": 5.0
 }]
@@ -50,6 +50,9 @@ animations = [{
 [node name="Launcher" type="StaticBody2D" groups=["launcher"]]
 y_sort_enabled = true
 script = ExtResource("1_4emaf")
+capacity = 40
+max_integrity = 200
+integrity = 200.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
