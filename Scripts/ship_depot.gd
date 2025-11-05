@@ -56,19 +56,20 @@ func _on_repair_button_gui_input(event: InputEvent) -> void:
 			refresh_gui()
 				
 func on_any_click(new_destination):
-	print(selecting)
 	if selecting:
 		if new_destination != null:
 			destination = new_destination
 			#my_ship.nav.target_position = destination.global_position
 			selecting = false
+			$GUI.visible = false
+			
 	refresh_gui()
 	
 func refresh_gui():
-	$"GUI/Control/Set Dest Button".text = "Cancel" if selecting else "Set Destination"
-	$GUI/Route.clear_points()
-	$GUI/Route.add_point(to_local(destination.global_position))
-	$GUI/Route.add_point(Vector2(0,0))
-
-#func _on_cursor_on_click(collider: CollisionObject2D) -> void:
-	#new_destination = collider
+	if $GUI.visible:
+		$"GUI/Control/Set Dest Button".text = "Cancel" if selecting else "Set Destination"
+		if destination == null:
+			return
+		$GUI/Route.clear_points()
+		$GUI/Route.add_point(to_local(destination.global_position))
+		$GUI/Route.add_point(Vector2(0,0))

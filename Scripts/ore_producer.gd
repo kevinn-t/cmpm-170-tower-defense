@@ -23,6 +23,7 @@ func _on_timer_timeout() -> void:
 	# switch depot checking to use Depot Check Area
 	var nearby : Array[Node2D] = $"Depot Check Area".get_overlapping_bodies()
 	var depots : Array[Building] = []
+	print(nearby)
 	
 	for building in nearby:
 		if building.is_in_group("ship_depot"):

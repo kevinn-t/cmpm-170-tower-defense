@@ -48,7 +48,7 @@ func build(buildingName : String, pos : Vector2):
 	#await  building.ready
 	building.onBuilt.emit()
 	updateUI()
-	print("built ", building, " ", building.global_position)
+	#print("built ", building, " ", building.global_position)
 	if clearBrushAfterBuild:
 		resetBuildingBrush()
 
