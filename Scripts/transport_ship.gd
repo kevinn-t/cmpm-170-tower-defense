@@ -40,6 +40,7 @@ func _physics_process(_delta: float) -> void:
 				nav.target_position = home.global_position
 
 		State.TRANSPORTING:
+			nav.target_desired_distance = 16
 			my_container.global_position = global_position - Vector2(24,0)
 			if nav.is_navigation_finished():
 				home.destination.recieve_delivery(my_container)
@@ -47,6 +48,7 @@ func _physics_process(_delta: float) -> void:
 				nav.target_position = home.global_position
 
 		State.RETURNING:
+			nav.target_desired_distance = 10
 			if nav.is_navigation_finished() or nearHome:
 				current_state = State.IDLE
 	

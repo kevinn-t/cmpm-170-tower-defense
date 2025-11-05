@@ -12,9 +12,6 @@ extends Node2D
 		$"Buildings/City Center".stored = value
 		$"Buildings/City Center".refreshUI.emit()
 
-@export var unemployed_population : int = 10
-@export var total_population : int = 10
-
 @onready var ground_layer: TileMapLayer = $GroundLayer
 
 const json_file_path = "res://Data/info.json"
@@ -22,10 +19,6 @@ const json_file_path = "res://Data/info.json"
 # loaded from json
 var buildingInfo : Dictionary
 var unitInfo : Dictionary
-
-func assign_workers(amount : int) -> void:
-	if (unemployed_population - amount > 0):
-		unemployed_population -= amount
 
 func _ready() -> void:
 	ground_layer.global_position = Vector2.ZERO;

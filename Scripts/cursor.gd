@@ -18,7 +18,7 @@ func _unhandled_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			var query = PhysicsPointQueryParameters2D.new()
 			query.position = global_position
-			query.collision_mask = 1
+			query.collision_mask = building_mask
 			
 			var physics_space = get_world_2d().direct_space_state
 			var results = physics_space.intersect_point(query)
