@@ -18,6 +18,7 @@ func on_built():
 	var inst : TransportShip = SHIP.instantiate()
 	$"../../Units".add_child(inst)
 	inst.global_position = global_position
+	inst.home = self
 
 func _on_timer_timeout() -> void:
 	if (workers <= 0):

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://pf6bulsx2yxi"]
+
+[ext_resource type="Script" uid="uid://dgqfrulmtjesh" path="res://Scripts/repair_home.gd" id="1_424lv"]
+[ext_resource type="PackedScene" uid="uid://cgp3s201fsakw" path="res://Prefabs/Previews/repair_home_sprite.tscn" id="2_424lv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_424lv"]
+radius = 207.03865
+
+[node name="Repair Home" type="StaticBody2D" groups=["ship_depot"]]
+y_sort_enabled = true
+script = ExtResource("1_424lv")
+
+[node name="Sprite2D" parent="." instance=ExtResource("2_424lv")]
+
+[node name="Dummy" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(16, 0, 0, -8, -16, 0, 0, 8)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Route" type="Line2D" parent="."]
+
+[node name="RepairDispatch" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RepairDispatch"]
+shape = SubResource("CircleShape2D_424lv")
+debug_color = Color(0.3598501, 0.6051165, 0.36320847, 0.41960785)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

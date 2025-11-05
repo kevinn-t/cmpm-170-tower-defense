@@ -29,7 +29,7 @@ func unload_storage_into(b : Dictionary) -> Dictionary:
 
 @export var team : int = 0
 @export var max_integrity : int = 100 
-@export var integrity : int = 100 # hit points
+@export var integrity : float = 100 # hit points
 
 signal onHit()
 signal onDestroyed()

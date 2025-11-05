@@ -63,7 +63,17 @@
 	  "size":1,
 	  "sprite":"res://Prefabs/Previews/turret.tscn",
 	  "prefab":"res://Prefabs/turret.tscn"
-	}
+	},
+	"repair_home":{
+		"name":"repair_home",
+		"cost":{
+	  "ore":15,
+	  "money":10
+		},
+	  "size":1,
+	  "sprite":"res://Prefabs/Previews/repair_home_sprite.tscn",
+		"prefab":"res://Prefabs/repair_home.tscn"
+  	}
   },
   "units":{
 	"transport":{

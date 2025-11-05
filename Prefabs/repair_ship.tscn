@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcc2hse3nq2h5"]
+
+[ext_resource type="Script" uid="uid://1iii38tge1yt" path="res://Scripts/repair_ship.gd" id="1_opdoe"]
+[ext_resource type="Texture2D" uid="uid://dr2ko05fgqpsa" path="res://Art/repair_ship.png" id="2_opdoe"]
+[ext_resource type="Script" uid="uid://g2h5vmi5xsd2" path="res://Scripts/trail2D.gd" id="3_p8w87"]
+
+[sub_resource type="Gradient" id="Gradient_ba1si"]
+colors = PackedColorArray(0.72156864, 0.8392157, 0.91764706, 1, 0.72156864, 0.8392157, 0.91764706, 0)
+
+[sub_resource type="Gradient" id="Gradient_cm1ru"]
+colors = PackedColorArray(0.72156864, 0.8392157, 0.91764706, 1, 0.72156864, 0.8392157, 0.91764706, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88h6h"]
+radius = 11.0
+
+[node name="RepairShip" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_opdoe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+rotation = 1.5707964
+texture = ExtResource("2_opdoe")
+
+[node name="Line2D" type="Line2D" parent="Sprite2D"]
+position = Vector2(3, 2.9999998)
+rotation = -1.5707964
+points = PackedVector2Array(0, 0, -23, 0)
+width = 2.0
+default_color = Color(0.72156864, 0.8392157, 0.91764706, 1)
+gradient = SubResource("Gradient_ba1si")
+script = ExtResource("3_p8w87")
+length = 20.0
+
+[node name="Line2D2" type="Line2D" parent="Sprite2D"]
+position = Vector2(-2.9999998, 3)
+rotation = -1.5707964
+points = PackedVector2Array(0, 0, -23, 0)
+width = 2.0
+default_color = Color(0.72156864, 0.8392157, 0.91764706, 1)
+gradient = SubResource("Gradient_cm1ru")
+script = ExtResource("3_p8w87")
+length = 20.0
+
+[node name="Line2D3" type="Line2D" parent="Sprite2D"]
+position = Vector2(2.9999998, -4)
+rotation = -1.5707964
+points = PackedVector2Array(0, 0, -23, 0)
+width = 2.0
+default_color = Color(0.72156864, 0.8392157, 0.91764706, 1)
+gradient = SubResource("Gradient_ba1si")
+script = ExtResource("3_p8w87")
+length = 20.0
+
+[node name="Line2D4" type="Line2D" parent="Sprite2D"]
+position = Vector2(-3, -4)
+rotation = -1.5707964
+points = PackedVector2Array(0, 0, -23, 0)
+width = 2.0
+default_color = Color(0.72156864, 0.8392157, 0.91764706, 1)
+gradient = SubResource("Gradient_cm1ru")
+script = ExtResource("3_p8w87")
+length = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_88h6h")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 50.0
+avoidance_enabled = true
+max_speed = 40.0
+debug_enabled = true
+debug_path_custom_color = Color(1, 0.25490198, 1, 1)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 12.0
+
+[node name="Status" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.75
+offset_top = 13.205
+offset_right = 95.25
+offset_bottom = 36.20501
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+text = "Returning Home"
+horizontal_alignment = 1
+
+[node name="RepairBeam" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 40, 0)
+width = 4.0
+default_color = Color(0.87058824, 0.80784315, 0.5411765, 1)
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

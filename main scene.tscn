@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://daa10ieakewou"]
+[gd_scene load_steps=24 format=4 uid="uid://daa10ieakewou"]
 
 [ext_resource type="PackedScene" uid="uid://xuoh0gxe3ly5" path="res://Prefabs/city_center.tscn" id="1_0afw7"]
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
@@ -9,13 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://disxuxh3oxbgs" path="res://Art/baseTile.png" id="6_sgb2t"]
 [ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="7_aqyhw"]
 [ext_resource type="Script" uid="uid://l6kpnfpk0r4" path="res://Scripts/game_manager.gd" id="8_18xev"]
-[ext_resource type="Texture2D" uid="uid://dr2ko05fgqpsa" path="res://Art/repair_ship.png" id="9_7bxi3"]
 [ext_resource type="PackedScene" uid="uid://cbsn06bvv4s7i" path="res://Prefabs/habitat.tscn" id="9_c1o4b"]
 [ext_resource type="PackedScene" uid="uid://d2dghsgfkop01" path="res://Prefabs/container.tscn" id="10_neqfu"]
 [ext_resource type="Script" uid="uid://cy6epkvluaqq0" path="res://Scripts/cursor.gd" id="11_4rud1"]
 [ext_resource type="PackedScene" uid="uid://bgahk4752h6c2" path="res://Prefabs/turret.tscn" id="14_52ei1"]
 [ext_resource type="Script" uid="uid://b84naho2s6x0q" path="res://Scripts/builder.gd" id="14_aovjg"]
+[ext_resource type="PackedScene" uid="uid://pf6bulsx2yxi" path="res://Prefabs/repair_home.tscn" id="15_7bxi3"]
 [ext_resource type="Script" uid="uid://dcfh5kofkok3d" path="res://Scripts/enemy_spawner.gd" id="15_v7vy4"]
+[ext_resource type="PackedScene" uid="uid://bcc2hse3nq2h5" path="res://Prefabs/repair_ship.tscn" id="16_lslek"]
 [ext_resource type="Texture2D" uid="uid://bepxf3r4002oq" path="res://icon.svg" id="16_v7vy4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_neqfu"]
@@ -108,9 +109,8 @@ z_index = -1
 position = Vector2(-5, 8.660254)
 rotation = 0.5235988
 
-[node name="RepairShip" type="Sprite2D" parent="Units"]
-position = Vector2(168, 96)
-texture = ExtResource("9_7bxi3")
+[node name="RepairShip" parent="Units" instance=ExtResource("16_lslek")]
+position = Vector2(128, -51)
 
 [node name="Buildings" type="Node2D" parent="."]
 
@@ -140,6 +140,10 @@ position = Vector2(56, -64)
 
 [node name="Turret2" parent="Buildings" instance=ExtResource("14_52ei1")]
 position = Vector2(250, -10)
+
+[node name="Repair Home" parent="Buildings" node_paths=PackedStringArray("my_ship") instance=ExtResource("15_7bxi3")]
+position = Vector2(128, -32)
+my_ship = NodePath("../../Units/RepairShip")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
