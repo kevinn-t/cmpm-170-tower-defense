@@ -41,6 +41,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_a38va")
-debug_color = Color(0.64600784, 0.4283531, 0.7779267, 0.41960785)
+debug_color = Color(0.64705884, 0.42745098, 0.7764706, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

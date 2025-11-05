@@ -52,13 +52,13 @@ shape = SubResource("CircleShape2D_88h6h")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
 max_speed = 40.0
-debug_enabled = true
 debug_path_custom_color = Color(1, 0.25490198, 1, 1)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 radius = 15.0
 
 [node name="Status" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

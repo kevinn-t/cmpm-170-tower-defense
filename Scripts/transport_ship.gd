@@ -21,7 +21,6 @@ var nearHome:
 		return global_position.distance_to(home.global_position) < homeDist
 
 func _physics_process(_delta: float) -> void:
-	super(_delta)
 	# if no home, die
 	if home == null:
 		velocity = Vector2.ZERO
@@ -66,6 +65,7 @@ func _physics_process(_delta: float) -> void:
 	
 	#velocity = nav.velocity
 	#move_and_slide()
+	super(_delta)
 
 func _mouse_enter() -> void:
 	$Status.visible = true

@@ -46,7 +46,7 @@ length = 20.0
 shape = SubResource("CircleShape2D_lgw76")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 100.0
+target_desired_distance = 40.0
 avoidance_enabled = true
 max_speed = 40.0
 debug_path_custom_color = Color(1, 0.25490198, 1, 1)

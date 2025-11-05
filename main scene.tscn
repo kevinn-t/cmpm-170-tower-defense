@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://pf6bulsx2yxi" path="res://Prefabs/repair_home.tscn" id="15_7bxi3"]
 [ext_resource type="Script" uid="uid://dcfh5kofkok3d" path="res://Scripts/enemy_spawner.gd" id="15_v7vy4"]
 [ext_resource type="PackedScene" uid="uid://bcc2hse3nq2h5" path="res://Prefabs/repair_ship.tscn" id="16_lslek"]
-[ext_resource type="Texture2D" uid="uid://bepxf3r4002oq" path="res://icon.svg" id="16_v7vy4"]
+[ext_resource type="Texture2D" uid="uid://ckhyprueg88jg" path="res://Art/enemy_flag.png" id="18_lslek"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_neqfu"]
 vertices = PackedVector2Array(334.28906, 117.890625, -374.59375, 110.10156, -389.35938, -126, 341.6875, -126)
@@ -109,8 +109,9 @@ z_index = -1
 position = Vector2(-5, 8.660254)
 rotation = 0.5235988
 
-[node name="RepairShip" parent="Units" instance=ExtResource("16_lslek")]
+[node name="RepairShip" parent="Units" node_paths=PackedStringArray("home") instance=ExtResource("16_lslek")]
 position = Vector2(128, -51)
+home = NodePath("../../Buildings/Repair Home")
 
 [node name="Buildings" type="Node2D" parent="."]
 
@@ -142,7 +143,7 @@ position = Vector2(56, -64)
 position = Vector2(250, -10)
 
 [node name="Repair Home" parent="Buildings" node_paths=PackedStringArray("my_ship") instance=ExtResource("15_7bxi3")]
-position = Vector2(128, -32)
+position = Vector2(112, -74)
 my_ship = NodePath("../../Units/RepairShip")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -170,13 +171,11 @@ position = Vector2(227, 88)
 script = ExtResource("15_v7vy4")
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]
-wait_time = 4.0
+wait_time = 5.0
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemySpawner"]
-modulate = Color(0.8445472, 0, 0.3830754, 1)
-scale = Vector2(0.14, 0.14)
-texture = ExtResource("16_v7vy4")
+texture = ExtResource("18_lslek")
 
 [node name="Enemies" type="Node2D" parent="."]
 

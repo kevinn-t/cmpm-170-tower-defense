@@ -67,7 +67,6 @@ func _get_nearest_target():
 			target = building
 
 func _physics_process(_delta: float) -> void:
-	super(_delta)
 	eval_state()
 	if not nav.is_navigation_finished():
 		var direction: Vector2 = global_position.direction_to(nav.get_next_path_position())
@@ -85,6 +84,7 @@ func _physics_process(_delta: float) -> void:
 		State.ATTACKING:
 			var dir = (target.global_position - global_position).normalized()
 			rotation = atan2(dir.y, dir.x)
+	super(_delta)
 	
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:

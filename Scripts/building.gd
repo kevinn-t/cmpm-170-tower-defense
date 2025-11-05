@@ -32,6 +32,7 @@ func unload_storage_into(b : Dictionary) -> Dictionary:
 @export var integrity : float = 100 # hit points
 
 signal onHit()
+signal onRepaired()
 signal onDestroyed()
 @warning_ignore("unused_signal")
 signal onBuilt()
@@ -45,8 +46,10 @@ func make_hp_bar():
 	var inst : HealthBar = HEALTH_BAR.instantiate()
 	add_child(inst)
 	onHit.connect(inst.refresh)
+	onRepaired.connect(inst.refresh)
 	refreshUI.connect(inst.refresh)
 	inst.refresh()
+	inst.global_position = global_position + Vector2.DOWN * 20
 
 const STORAGE_UI = preload("res://Prefabs/UI/storage_ui.tscn")
 func make_storage_ui():

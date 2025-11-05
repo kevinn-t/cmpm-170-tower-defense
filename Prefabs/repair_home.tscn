@@ -24,6 +24,6 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RepairDispatch"]
 shape = SubResource("CircleShape2D_424lv")
-debug_color = Color(0.3598501, 0.6051165, 0.36320847, 0.41960785)
+debug_color = Color(0.36078432, 0.6039216, 0.3647059, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

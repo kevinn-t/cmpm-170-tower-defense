@@ -37,7 +37,8 @@ func _ready() -> void:
 	make_hp_bar()
 
 func _physics_process(_delta: float) -> void:
-	health_bar.rotation = rotation * -1
+	health_bar.global_position = global_position + Vector2.DOWN * 20
+	health_bar.global_rotation_degrees = 0
 
 const HEALTH_BAR = preload("res://Prefabs/UI/health_bar.tscn")
 var health_bar : HealthBar
