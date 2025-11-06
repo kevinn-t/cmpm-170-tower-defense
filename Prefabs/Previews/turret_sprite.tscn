@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbi5cyrhaxq0v"]
+
+[ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="1_oc5b2"]
+[ext_resource type="Script" uid="uid://bq6xlk05lanmr" path="res://Scripts/buildng_cost.gd" id="2_bqsp2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjdg3"]
+atlas = ExtResource("1_oc5b2")
+region = Rect2(101, 93, 26, 26)
+
+[node name="turret" type="Sprite2D"]
+texture = SubResource("AtlasTexture_tjdg3")
+offset = Vector2(2, -6)
+script = ExtResource("2_bqsp2")

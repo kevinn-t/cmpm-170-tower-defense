@@ -11,8 +11,8 @@
 		"money": 10
 	  },
 	  "size":2,
-	  "sprite":"res://Prefabs/Previews/city_sprite.tscn",
-	  "prefab":"res://Prefabs/city_center.tscn"
+	  "sprite":"uid://bpvxhdt725i3x",
+	  "prefab":"uid://xuoh0gxe3ly5"
 	},
 	"habitat":{
 	  "name": "habitat",
@@ -21,8 +21,8 @@
 		"money": 5
 	  },
 	  "size":1,
-	  "sprite":"res://Prefabs/Previews/habitat_sprite.tscn",
-	  "prefab":"res://Prefabs/habitat.tscn"
+	  "sprite":"uid://dk455q2pfy50b",
+	  "prefab":"uid://cbsn06bvv4s7i"
 	},
 	"drill":{
 	  "name": "drill",
@@ -31,8 +31,8 @@
 		"money": 5
 	  },
 	  "size":1,
-	  "sprite":"res://Prefabs/Previews/drill_sprite.tscn",
-	  "prefab":"res://Prefabs/drill.tscn"
+	  "sprite":"uid://6bbjxmbvawxa",
+	  "prefab":"uid://digijb3eflvbs"
 	},
 	"ship depot":{
 	  "name": "ship depot",
@@ -41,8 +41,8 @@
 		"money": 8
 	  },
 	  "size":1,
-	  "sprite":"res://Prefabs/Previews/ship_depot_sprite.tscn",
-	  "prefab":"res://Prefabs/ship_depot.tscn"
+	  "sprite":"uid://riooch6ao270",
+	  "prefab":"uid://dml41df75scnh"
 	},
 	"launcher":{
 	  "name": "launcher",
@@ -51,8 +51,8 @@
 		"money": 30
 	  },
 	  "size":2,
-	  "sprite":"res://Prefabs/Previews/launcher_sprite.tscn",
-	  "prefab":"res://Prefabs/launcher.tscn"
+	  "sprite":"uid://x3xnp7n7xnv4",
+	  "prefab":"uid://bjuiop2xqasns"
 	},
 	"turret":{
 	  "name": "turret",
@@ -61,8 +61,8 @@
 		"money": 10
 	  },
 	  "size":1,
-	  "sprite":"res://Prefabs/Previews/turret.tscn",
-	  "prefab":"res://Prefabs/turret.tscn"
+	  "sprite":"uid://dbi5cyrhaxq0v",
+	  "prefab":"uid://bgahk4752h6c2"
 	},
 	"repair_home":{
 		"name":"repair_home",
@@ -71,8 +71,8 @@
 	  "money":10
 		},
 	  "size":1,
-	  "sprite":"res://Prefabs/Previews/repair_home_sprite.tscn",
-		"prefab":"res://Prefabs/repair_home.tscn"
+	  "sprite":"uid://cgp3s201fsakw",
+		"prefab":"uid://bcc2hse3nq2h5"
   	}
   },
   "units":{

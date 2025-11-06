@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgahk4752h6c2"]
 
 [ext_resource type="Script" uid="uid://buartb70omyqa" path="res://Scripts/turret.gd" id="1_ru586"]
-[ext_resource type="PackedScene" uid="uid://dbi5cyrhaxq0v" path="res://Prefabs/Previews/turret.tscn" id="1_s6tqq"]
+[ext_resource type="PackedScene" uid="uid://dbi5cyrhaxq0v" path="res://Prefabs/Previews/turret_sprite.tscn" id="1_s6tqq"]
 [ext_resource type="PackedScene" uid="uid://bv3jw0xt10wxi" path="res://Prefabs/gun.tscn" id="3_a38va"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a38va"]
