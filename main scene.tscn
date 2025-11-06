@@ -13,12 +13,12 @@
 [ext_resource type="Script" uid="uid://cy6epkvluaqq0" path="res://Scripts/cursor.gd" id="11_4rud1"]
 [ext_resource type="PackedScene" uid="uid://riooch6ao270" path="res://Prefabs/Previews/ship_depot_sprite.tscn" id="11_o10iu"]
 [ext_resource type="PackedScene" uid="uid://cgp3s201fsakw" path="res://Prefabs/Previews/repair_home_sprite.tscn" id="12_2oafy"]
+[ext_resource type="PackedScene" uid="uid://jivqusd7xwo1" path="res://Prefabs/ship.tscn" id="12_j008o"]
 [ext_resource type="PackedScene" uid="uid://douedn5bxcj44" path="res://Prefabs/UI/building_button.tscn" id="13_v7vy4"]
 [ext_resource type="PackedScene" uid="uid://bgahk4752h6c2" path="res://Prefabs/turret.tscn" id="14_52ei1"]
 [ext_resource type="Script" uid="uid://b84naho2s6x0q" path="res://Scripts/builder.gd" id="14_aovjg"]
-[ext_resource type="PackedScene" uid="uid://pf6bulsx2yxi" path="res://Prefabs/repair_home.tscn" id="15_7bxi3"]
 [ext_resource type="Script" uid="uid://dcfh5kofkok3d" path="res://Scripts/enemy_spawner.gd" id="15_v7vy4"]
-[ext_resource type="PackedScene" uid="uid://bcc2hse3nq2h5" path="res://Prefabs/repair_ship.tscn" id="16_lslek"]
+[ext_resource type="PackedScene" uid="uid://dml41df75scnh" path="res://Prefabs/ship_depot.tscn" id="17_xn55d"]
 [ext_resource type="Texture2D" uid="uid://ckhyprueg88jg" path="res://Art/enemy_flag.png" id="18_lslek"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_neqfu"]
@@ -107,6 +107,7 @@ region = Rect2(64, 0, 32, 32)
 script = ExtResource("8_18xev")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_neqfu")
 
 [node name="GroundLayer" type="TileMapLayer" parent="."]
@@ -115,7 +116,7 @@ tile_map_data = PackedByteArray("AAD9//j/AQACAAAAAAD9//n/AQAEAAAAAAD9//r/AQAEAAA
 tile_set = SubResource("TileSet_18xev")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(168, -5)
+position = Vector2(-48, -18)
 zoom = Vector2(2.11, 2.11)
 script = ExtResource("3_ohk57")
 
@@ -132,20 +133,25 @@ texture = SubResource("AtlasTexture_neqfu")
 [node name="PreviewParent" type="Node2D" parent="Cursor"]
 
 [node name="drill" parent="Cursor/PreviewParent" instance=ExtResource("8_ipocw")]
+visible = false
 
 [node name="launcher" parent="Cursor/PreviewParent" instance=ExtResource("9_aw4ih")]
+visible = false
 
 [node name="turret" parent="Cursor/PreviewParent" instance=ExtResource("10_abrck")]
+visible = false
 
 [node name="transport depot" parent="Cursor/PreviewParent" instance=ExtResource("11_o10iu")]
+visible = false
 
 [node name="repair depot" parent="Cursor/PreviewParent" instance=ExtResource("12_2oafy")]
+visible = false
 
 [node name="Units" type="Node2D" parent="."]
 
-[node name="RepairShip" parent="Units" node_paths=PackedStringArray("home") instance=ExtResource("16_lslek")]
-position = Vector2(128, -51)
-home = NodePath("../../Buildings/Repair Home")
+[node name="Ship" parent="Units" node_paths=PackedStringArray("home") instance=ExtResource("12_j008o")]
+position = Vector2(-104, 48)
+home = NodePath("../../Buildings/Ship Depot")
 
 [node name="Buildings" type="Node2D" parent="."]
 
@@ -156,20 +162,20 @@ stored = {
 }
 
 [node name="Drill" parent="Buildings" instance=ExtResource("2_ux2rm")]
-position = Vector2(64, 0)
+position = Vector2(-64, 48)
 
 [node name="Launcher" parent="Buildings" instance=ExtResource("3_sgb2t")]
-position = Vector2(176, -1)
+position = Vector2(-144, -48)
 
 [node name="Turret" parent="Buildings" instance=ExtResource("14_52ei1")]
-position = Vector2(56, -64)
+position = Vector2(-48, -88)
 
 [node name="Turret2" parent="Buildings" instance=ExtResource("14_52ei1")]
-position = Vector2(250, -10)
+position = Vector2(0, 47)
 
-[node name="Repair Home" parent="Buildings" node_paths=PackedStringArray("my_ship") instance=ExtResource("15_7bxi3")]
-position = Vector2(112, -74)
-my_ship = NodePath("../../Units/RepairShip")
+[node name="Ship Depot" parent="Buildings" node_paths=PackedStringArray("destination") instance=ExtResource("17_xn55d")]
+position = Vector2(-48, 56)
+destination = NodePath("../City Center")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
