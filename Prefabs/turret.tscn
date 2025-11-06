@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgahk4752h6c2"]
+[gd_scene load_steps=6 format=3 uid="uid://bgahk4752h6c2"]
 
 [ext_resource type="Script" uid="uid://buartb70omyqa" path="res://Scripts/turret.gd" id="1_ru586"]
 [ext_resource type="PackedScene" uid="uid://dbi5cyrhaxq0v" path="res://Prefabs/Previews/turret.tscn" id="1_s6tqq"]
 [ext_resource type="PackedScene" uid="uid://bv3jw0xt10wxi" path="res://Prefabs/gun.tscn" id="3_a38va"]
+[ext_resource type="PackedScene" uid="uid://dfd3iunvywl6" path="res://Prefabs/shoot_sound.tscn" id="4_jmsgf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a38va"]
 radius = 113.004425
@@ -42,5 +43,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_a38va")
 debug_color = Color(0.64705884, 0.42745098, 0.7764706, 0)
+
+[node name="ShootSound" parent="." instance=ExtResource("4_jmsgf")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

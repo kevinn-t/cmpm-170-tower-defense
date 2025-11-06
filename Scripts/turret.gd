@@ -39,3 +39,14 @@ func fire_guns(target : Node):
 			c.target = target
 			c.set_firing(target != null)
 			#print(target != null)
+
+const SOUND = preload("res://Prefabs/shoot_sound.tscn")
+
+func fireSFX():
+	var inst : AudioStreamPlayer2D = SOUND.instantiate()
+	add_child(inst)
+	inst.global_position = global_position
+	inst.play()
+	# instance
+	# set inst position to turret global position
+	# add child(inst)
