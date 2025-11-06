@@ -35,6 +35,7 @@ func fire():
 	inst.linear_velocity = dir * bullet_speed
 	rotation = atan2(dir.y, dir.x)
 	inst.rotation = atan2(dir.y, dir.x)
+	get_parent().fireSFX()
 
 func _on_shoot_cooldown_timeout() -> void:
 	fire()

@@ -65,3 +65,14 @@ func explosion(explosion_iterations : int = 2, explosion_chance : float = 0.2, e
 			randCircle.normalized()
 			
 		inst.global_position = global_position + randCircle * explosion_radius
+
+
+const SOUND = preload("res://Prefabs/shoot_sound.tscn")
+func fireSFX():
+	var inst : AudioStreamPlayer2D = SOUND.instantiate()
+	add_child(inst)
+	inst.global_position = global_position
+	inst.play()
+	var DIE = func die():
+		inst.queue_free()
+	inst.finished.connect(DIE)

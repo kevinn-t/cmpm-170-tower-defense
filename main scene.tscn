@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://daa10ieakewou"]
+[gd_scene load_steps=39 format=4 uid="uid://daa10ieakewou"]
 
 [ext_resource type="PackedScene" uid="uid://xuoh0gxe3ly5" path="res://Prefabs/city_center.tscn" id="1_0afw7"]
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
@@ -20,8 +20,9 @@
 [ext_resource type="Script" uid="uid://dcfh5kofkok3d" path="res://Scripts/enemy_spawner.gd" id="15_v7vy4"]
 [ext_resource type="PackedScene" uid="uid://dml41df75scnh" path="res://Prefabs/ship_depot.tscn" id="17_xn55d"]
 [ext_resource type="Texture2D" uid="uid://ckhyprueg88jg" path="res://Art/enemy_flag.png" id="18_lslek"]
-[ext_resource type="Script" uid="uid://dgraq5sot6cil" path="res://enemy_warning_label.gd" id="19_xn55d"]
-[ext_resource type="Script" uid="uid://cfi4p0c05xtit" path="res://directions_stopwatch.gd" id="20_tfagm"]
+[ext_resource type="Script" path="res://enemy_warning_label.gd" id="19_xn55d"]
+[ext_resource type="Script" path="res://directions_stopwatch.gd" id="20_tfagm"]
+[ext_resource type="PackedScene" uid="uid://dbjsdcb8gin4k" path="res://Prefabs/enemy.tscn" id="23_ipocw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_neqfu"]
 vertices = PackedVector2Array(773.9219, -598.25, 766.0703, 502, -734.2031, 502, -757.78125, -637.71875)
@@ -278,6 +279,9 @@ autostart = true
 texture = ExtResource("18_lslek")
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("23_ipocw")]
+position = Vector2(248, 93)
 
 [node name="Bullets" type="Node2D" parent="."]
 
