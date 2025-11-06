@@ -22,6 +22,8 @@ func on_built():
 	my_ship.global_position = global_position
 	my_ship.home = self
 	gm.all_buildings[grid_pos()] = self
+	#$GUI.visible = true
+	#selecting = true
 
 func _on_timer_timeout() -> void:
 	if (stored["ore"] <= 0):
@@ -48,8 +50,6 @@ func _on_repair_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			selecting = !selecting
-			$"GUI/Control/Set Dest Button".text = "Cancel" if selecting else "Set Destination"
-			
 			refresh_gui()
 				
 func on_any_click(new_destination):
