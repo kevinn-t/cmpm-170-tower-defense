@@ -15,7 +15,7 @@ config/tags=PackedStringArray("cmpm170")
 run/main_scene="uid://crdn6fen36i1n"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
-config/icon="uid://r1wyym74q2hw"
+config/icon="uid://7e682tasnehe"
 
 [global_group]
 

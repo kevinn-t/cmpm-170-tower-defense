@@ -17,7 +17,8 @@ y_sort_enabled = true
 script = ExtResource("1_0n8n4")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_07swf")]
-position = Vector2(0, -2)
+y_sort_enabled = true
+position = Vector2(0, -1)
 
 [node name="inactive" parent="." instance=ExtResource("2_07swf")]
 visible = false

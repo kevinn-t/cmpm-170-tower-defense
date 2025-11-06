@@ -15,6 +15,7 @@ input_pickable = true
 script = ExtResource("1_ierel")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_qpmyw")]
+position = Vector2(0, -1)
 texture = SubResource("AtlasTexture_ox7xa")
 
 [node name="Dummy" type="CollisionPolygon2D" parent="."]
