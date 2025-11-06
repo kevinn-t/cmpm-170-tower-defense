@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://xuoh0gxe3ly5"]
 
 [ext_resource type="Script" uid="uid://cv4vjo7eae6sj" path="res://Scripts/city_center.gd" id="1_8neen"]
-[ext_resource type="PackedScene" uid="uid://c0s0n0qlxsoov" path="res://Prefabs/Previews/city_sprite.tscn" id="2_ai34k"]
+[ext_resource type="PackedScene" uid="uid://bpvxhdt725i3x" path="res://Prefabs/Previews/city_sprite.tscn" id="2_ai34k"]
 
 [node name="City Center" type="StaticBody2D" groups=["city_center"]]
 y_sort_enabled = true

@@ -36,8 +36,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func build(buildingName : String, pos : Vector2):
-	#if not gm.subtractCost(previewInstanceParent.get_node(buildingName).buildCost):
-		#return
+	if not gm.subtractCost(previewInstanceParent.get_node(buildingName).buildCost):
+		return
 	var buildingInfo = gm.buildingInfo[buildingName]
 	var buildingPrefab : PackedScene = load(buildingInfo.prefab)
 	var building :Building = buildingPrefab.instantiate()
@@ -57,6 +57,8 @@ func populatePreviews() -> void:
 		var prefab : PackedScene = load(gm.buildingInfo[b].sprite)
 		var inst : Sprite2D = prefab.instantiate()
 		inst.name = gm.buildingInfo[b].name
+		inst.buildCost["ore"] = gm.buildingInfo[b].cost.ore
+		inst.buildCost["money"] = gm.buildingInfo[b].cost.money
 		previewInstanceParent.add_child(inst)
 
 func populateBuildUI():
@@ -64,7 +66,7 @@ func populateBuildUI():
 		var button : TextureButton = BUILDING_BUTTON.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 		button.texture_normal = inst.get_texture()
 		button.get_node("Name").text = inst.name
-		#button.get_node("Costs").text = inst.costString()
+		button.get_node("Costs").text = inst.costString()
 		var clicked = func():
 			buildingBrushSelected(inst.name)
 		button.pressed.connect(clicked)

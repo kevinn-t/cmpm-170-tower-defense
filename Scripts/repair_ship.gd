@@ -83,7 +83,7 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 	
 
-func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+func _on_navigation_agent_2d_velocity_computed(_safe_velocity: Vector2) -> void:
 	#velocity = safe_velocity
 	pass
 	#print("Safe velocity " + str(safe_velocity))

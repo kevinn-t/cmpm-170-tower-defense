@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://riooch6ao270"]
+[gd_scene load_steps=4 format=3 uid="uid://riooch6ao270"]
 
 [ext_resource type="Texture2D" uid="uid://ngf8x83gaik2" path="res://Art/ship_homes-Sheet.png" id="1_u7sgk"]
+[ext_resource type="Script" uid="uid://bq6xlk05lanmr" path="res://Scripts/buildng_cost.gd" id="2_4wqui"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wqui"]
 atlas = ExtResource("1_u7sgk")
 region = Rect2(64, 0, 32, 32)
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="ship depot" type="Sprite2D"]
 texture = SubResource("AtlasTexture_4wqui")
+script = ExtResource("2_4wqui")

@@ -33,7 +33,7 @@ func _ready() -> void:
 	var _error = json.parse(json_text)
 
 	var data = json.get_data()
-	print(_error)
+	#print(_error)
 	buildingInfo = data["buildings"]
 	unitInfo = data["units"]
 	stored = data["starting_stored"]
