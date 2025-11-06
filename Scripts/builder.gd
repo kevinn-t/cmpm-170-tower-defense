@@ -16,6 +16,21 @@ const BUILDING_BUTTON = preload("res://Prefabs/UI/building_button.tscn")
 
 @export var clearBrushAfterBuild : bool = true
 
+var previews : Array[NodePath] = [
+	"../Cursor/PreviewParent/drill",
+	"../Cursor/PreviewParent/turret",
+	"../Cursor/PreviewParent/launcher",
+	"../Cursor/PreviewParent/transport depot",
+	"../Cursor/PreviewParent/repair depot"
+]
+var buttons : Array[NodePath] = [
+	"../UI/VBoxContainer/FoldableContainer/VBoxContainer/Drill",
+	"../UI/VBoxContainer/FoldableContainer/VBoxContainer/Turret",
+	"../UI/VBoxContainer/FoldableContainer/VBoxContainer/Launcher",
+	"../UI/VBoxContainer/FoldableContainer/VBoxContainer/Transport",
+	"../UI/VBoxContainer/FoldableContainer/VBoxContainer/Repair"
+]
+
 func _ready() -> void:
 	await gm.ready
 	populatePreviews()
@@ -53,24 +68,41 @@ func build(buildingName : String, pos : Vector2):
 		resetBuildingBrush()
 
 func populatePreviews() -> void:
-	for b in gm.buildingInfo:
-		var prefab : PackedScene = load(gm.buildingInfo[b].sprite)
-		var inst : Sprite2D = prefab.instantiate()
-		inst.name = gm.buildingInfo[b].name
-		inst.buildCost["ore"] = gm.buildingInfo[b].cost.ore
-		inst.buildCost["money"] = gm.buildingInfo[b].cost.money
-		previewInstanceParent.add_child(inst)
+	#for b in gm.buildingInfo:
+		#var prefab : PackedScene = load(gm.buildingInfo[b].sprite)
+		#var inst : Sprite2D = prefab.instantiate()
+		#inst.name = gm.buildingInfo[b].name
+		#inst.buildCost["ore"] = gm.buildingInfo[b].cost.ore
+		#inst.buildCost["money"] = gm.buildingInfo[b].cost.money
+		#previewInstanceParent.add_child(inst)
+	#print(gm.buildingInfo)
+	#for i in range(len(previews)):
+		#var inst = get_node(previews[i])
+		#inst.buildCost["ore"] = gm.buildingInfo[inst.name].cost.ore
+		#inst.buildCost["money"] = gm.buildingInfo[inst.name].cost.money
+		#previewInstanceParent.add_child(inst)
+	pass
 
 func populateBuildUI():
-	for inst : Sprite2D in previewInstanceParent.get_children():
-		var button : TextureButton = BUILDING_BUTTON.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
-		button.texture_normal = inst.get_texture()
+	#for inst : Sprite2D in previewInstanceParent.get_children():
+		#var button : TextureButton = BUILDING_BUTTON.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+		#button.texture_normal = inst.get_texture()
+		#button.get_node("Name").text = inst.name
+		#button.get_node("Costs").text = inst.costString()
+		#var clicked = func():
+			#buildingBrushSelected(inst.name)
+		#button.pressed.connect(clicked)
+		#buildingUIButtonParent.add_child(button)
+	for i in range(len(previews)):
+		var inst = get_node(previews[i])
+		var button : Button = get_node(buttons[i])
+		#print("BUTT: ", button, " INST: ", inst, " PATHS ", previews[i]," &&& ", buttons[i])
+		button.get_node("TextureRect").texture = inst.get_texture()
 		button.get_node("Name").text = inst.name
-		button.get_node("Costs").text = inst.costString()
+		button.get_node("Costs").text = costString(gm.buildingInfo[inst.name].cost)
 		var clicked = func():
 			buildingBrushSelected(inst.name)
 		button.pressed.connect(clicked)
-		buildingUIButtonParent.add_child(button)
 		
 func buildingBrushSelected(brush_name : String):
 	brush = brush_name
@@ -95,4 +127,11 @@ func storedString() -> String:
 	for k in gm.stored.keys():
 		if gm.stored[k] > 0:
 			s+= str(gm.stored[k]) + " " + str(k) + " "
+	return s
+
+func costString(cost : Dictionary) -> String:
+	var s = ""
+	for k in cost.keys():
+		if cost[k] > 0:
+			s+= str(cost[k]) + " " + str(k) + " "
 	return s

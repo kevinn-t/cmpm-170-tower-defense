@@ -34,8 +34,8 @@
 	  "sprite":"res://Prefabs/Previews/drill_sprite.tscn",
 	  "prefab":"res://Prefabs/drill.tscn"
 	},
-	"ship depot":{
-	  "name": "ship depot",
+	"transport depot":{
+	  "name": "transport depot",
 	  "cost": {
 		"ore": 8,
 		"money": 8
@@ -64,8 +64,8 @@
 	  "sprite":"res://Prefabs/Previews/turret.tscn",
 	  "prefab":"res://Prefabs/turret.tscn"
 	},
-	"repair_home":{
-		"name":"repair_home",
+	"repair depot":{
+		"name":"repair depot",
 		"cost":{
 	  "ore":15,
 	  "money":10

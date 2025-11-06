@@ -1,14 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://douedn5bxcj44"]
+[gd_scene load_steps=2 format=3 uid="uid://douedn5bxcj44"]
 
-[ext_resource type="Texture2D" uid="uid://c5sbsmeihnnk" path="res://Art/atlas.png" id="1_ae0qj"]
+[ext_resource type="Texture2D" uid="uid://disxuxh3oxbgs" path="res://Art/baseTile.png" id="1_uyfvl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4rud1"]
-atlas = ExtResource("1_ae0qj")
-region = Rect2(128, 32, 64, 64)
-
-[node name="BuildingButton" type="TextureButton"]
+[node name="BuildingButton" type="Button"]
 custom_minimum_size = Vector2(200, 80)
-texture_normal = SubResource("AtlasTexture_4rud1")
+offset_right = 200.0
+offset_bottom = 80.0
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 1
@@ -32,3 +29,9 @@ offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Ore:3 Money:5"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("1_uyfvl")
