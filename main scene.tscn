@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://daa10ieakewou"]
+[gd_scene load_steps=28 format=4 uid="uid://daa10ieakewou"]
 
 [ext_resource type="PackedScene" uid="uid://xuoh0gxe3ly5" path="res://Prefabs/city_center.tscn" id="1_0afw7"]
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
@@ -68,41 +68,6 @@ sources/1 = SubResource("TileSetAtlasSource_18xev")
 [sub_resource type="AtlasTexture" id="AtlasTexture_neqfu"]
 atlas = ExtResource("7_aqyhw")
 region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7bxi3"]
-load_path = "res://.godot/imported/atlas.png-774ed55b08ef8faf76a3abf64cb9790d.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lslek"]
-atlas = SubResource("CompressedTexture2D_7bxi3")
-region = Rect2(128, 32, 64, 64)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v7vy4"]
-load_path = "res://.godot/imported/drill-Sheet.png-40fa5a2ad9f67aa4c8375f40f0bac691.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7bxi3"]
-atlas = SubResource("CompressedTexture2D_v7vy4")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lslek"]
-load_path = "res://.godot/imported/atlas.png-774ed55b08ef8faf76a3abf64cb9790d.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cws43"]
-atlas = SubResource("CompressedTexture2D_lslek")
-region = Rect2(101, 93, 26, 26)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j008o"]
-load_path = "res://.godot/imported/ship_homes-Sheet.png-4fa391e6e7ea62dca8e249cf6051dadf.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xn55d"]
-atlas = SubResource("CompressedTexture2D_j008o")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tfagm"]
-load_path = "res://.godot/imported/ship_homes-Sheet.png-4fa391e6e7ea62dca8e249cf6051dadf.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ipocw"]
-atlas = SubResource("CompressedTexture2D_tfagm")
-region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lslek"]
 radius = 2.0
@@ -199,17 +164,11 @@ text = "Unselect"
 [node name="Launcher" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer" instance=ExtResource("13_v7vy4")]
 layout_mode = 2
 
-[node name="TextureRect" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer/Launcher" index="2"]
-texture = SubResource("AtlasTexture_lslek")
-
 [node name="Drill" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer" instance=ExtResource("13_v7vy4")]
 layout_mode = 2
 
 [node name="Name" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer/Drill" index="0"]
 text = "Drill"
-
-[node name="TextureRect" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer/Drill" index="2"]
-texture = SubResource("AtlasTexture_7bxi3")
 
 [node name="Turret" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer" instance=ExtResource("13_v7vy4")]
 layout_mode = 2
@@ -217,26 +176,17 @@ layout_mode = 2
 [node name="Name" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer/Turret" index="0"]
 text = "Turret"
 
-[node name="TextureRect" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer/Turret" index="2"]
-texture = SubResource("AtlasTexture_cws43")
-
 [node name="Transport" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer" instance=ExtResource("13_v7vy4")]
 layout_mode = 2
 
 [node name="Name" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer/Transport" index="0"]
 text = "Transport Depot"
 
-[node name="TextureRect" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer/Transport" index="2"]
-texture = SubResource("AtlasTexture_xn55d")
-
 [node name="Repair" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer" instance=ExtResource("13_v7vy4")]
 layout_mode = 2
 
 [node name="Name" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer/Repair" index="0"]
 text = "Repair Depot"
-
-[node name="TextureRect" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer/Repair" index="2"]
-texture = SubResource("AtlasTexture_ipocw")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(227, 88)
