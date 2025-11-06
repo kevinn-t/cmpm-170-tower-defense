@@ -17,10 +17,11 @@ func _ready() -> void:
 	waveData = data["waves"]
 	#$Timer.stop() # temporary just spawn 1 and stop
 	
+	
+func _on_timer_timeout() -> void:
 	for waveIndex in waveData.size():
-		if wave_is_active():
-			pass
-		print(waveData[0].enemies)
+		#if wave_is_active():
+			#pass
 		await play_wave(waveIndex)
 
 func play_wave(index : int):
