@@ -3,7 +3,7 @@ extends Building
 
 @onready var gm = $"../.."
 
-const SHIP = preload("res://Prefabs/ship.tscn")
+const SHIP = preload("uid://jivqusd7xwo1")
 var my_ship : TransportShip
 
 @export var destination : Building

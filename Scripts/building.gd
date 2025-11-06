@@ -65,7 +65,7 @@ signal onDelivery()# delivered : Dictionary
 signal refreshUI()
 	
 
-const HEALTH_BAR = preload("res://Prefabs/UI/health_bar.tscn")
+const HEALTH_BAR = preload("uid://bypjbaojskh0g")
 func make_hp_bar():
 	var inst : HealthBar = HEALTH_BAR.instantiate()
 	add_child(inst)
@@ -75,7 +75,7 @@ func make_hp_bar():
 	inst.refresh()
 	inst.global_position = global_position + Vector2.DOWN * 20
 
-const STORAGE_UI = preload("res://Prefabs/UI/storage_ui.tscn")
+const STORAGE_UI = preload("uid://44m0h5ev5e6")
 func make_storage_ui():
 	var inst : StorageUI = STORAGE_UI.instantiate()
 	add_child(inst)
@@ -99,7 +99,7 @@ func _ready() -> void:
 	make_hp_bar()
 	make_storage_ui()
 
-const EXPLOSION = preload("res://Prefabs/explosion.tscn")
+const EXPLOSION = preload("uid://lsjc4jwogg6r")
 func explosion(explosion_iterations : int = 2, explosion_chance : float = 0.2, explosion_radius : float = 20):
 	for i in range(explosion_iterations):
 		var r = randf()
@@ -115,7 +115,7 @@ func explosion(explosion_iterations : int = 2, explosion_chance : float = 0.2, e
 		inst.global_position = global_position + randCircle * explosion_radius
 
 
-const CONTAINER = preload("res://Prefabs/container.tscn")
+const CONTAINER = preload("uid://d2dghsgfkop01")
 @export var my_container : MatContainer 
 
 func recieve_delivery(container : MatContainer) -> void:

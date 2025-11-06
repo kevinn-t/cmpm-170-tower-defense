@@ -9,7 +9,7 @@ extends Node2D
 var brush = null
 
 @onready var previewInstanceParent : Node2D = $"../Cursor/PreviewParent"
-const BUILDING_BUTTON = preload("res://Prefabs/UI/building_button.tscn")
+const BUILDING_BUTTON = preload("uid://douedn5bxcj44")
 @onready var unitParent : Node2D = $"../Units"
 @onready var buildingsParent : Node2D = $"../Buildings"
 @onready var buildingUIButtonParent : VBoxContainer = $"../UI/VBoxContainer/FoldableContainer/VBoxContainer"

@@ -8,7 +8,7 @@ var target : Node2D = null
 @export var damage : int = 5
 @export var bullet_speed = 500
 
-const BULLET = preload("res://Prefabs/bullet.tscn")
+const BULLET = preload("uid://d22vxavb3gd1o")
 
 func set_firing(firing : bool = true):
 	if firing:

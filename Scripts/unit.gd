@@ -42,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 	health_bar.global_position = global_position + Vector2.DOWN * 20
 	health_bar.global_rotation_degrees = 0
 
-const HEALTH_BAR = preload("res://Prefabs/UI/health_bar.tscn")
+const HEALTH_BAR = preload("uid://bypjbaojskh0g")
 var health_bar : HealthBar
 func make_hp_bar():
 	health_bar = HEALTH_BAR.instantiate()
@@ -51,7 +51,7 @@ func make_hp_bar():
 	health_bar.refresh()
 	health_bar.rotation = rotation * -1
 
-const EXPLOSION = preload("res://Prefabs/explosion.tscn")
+const EXPLOSION = preload("uid://lsjc4jwogg6r")
 func explosion(explosion_iterations : int = 2, explosion_chance : float = 0.2, explosion_radius : float = 20):
 	for i in range(explosion_iterations):
 		var r = randf()

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var enemy = preload("res://Prefabs/enemy.tscn")
+@onready var enemy = preload("uid://dbjsdcb8gin4k")
 @onready var enemies: Node2D = $"../Enemies"
 
 func _ready() -> void:

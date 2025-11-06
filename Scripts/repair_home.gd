@@ -1,6 +1,6 @@
 extends Building
 
-const SHIP = preload("res://Prefabs/repair_ship.tscn")
+const SHIP = preload("uid://bcc2hse3nq2h5")
 
 @export var my_ship : RepairShip
 @onready var gm = $"../.."

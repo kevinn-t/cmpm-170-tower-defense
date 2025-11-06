@@ -33,7 +33,7 @@ func _on_launch_animation_animation_finished() -> void:
 func _on_timer_timeout() -> void:
 	launch()
 	
-const RESOURCE_GENERATED = preload("res://Prefabs/UI/resource_generated.tscn")
+const RESOURCE_GENERATED = preload("uid://ckpba7er6hfdb")
 const resource_sprites = {
 	"ore" : "res://Art/ore.png",
 	"money" : "res://Art/money.png"
