@@ -6,7 +6,7 @@ extends StaticBody2D
 # but we dont want it empty
 
 @export var stored : Dictionary = {
-	"ore" = 0
+	"ore" = 1
 }
 @export var capacity : int = 15
 

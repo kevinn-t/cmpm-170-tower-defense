@@ -17,19 +17,21 @@ func _ready() -> void:
 	waveData = data["waves"]
 	#$Timer.stop() # temporary just spawn 1 and stop
 	
-	
+var wave_index = 0
 func _on_timer_timeout() -> void:
-	for waveIndex in waveData.size():
-		#if wave_is_active():
-			#pass
-		await play_wave(waveIndex)
+	wave_index+=1
+	if wave_index >= waveData.size():
+		wave_index = 0
+		
+	play_wave(wave_index)
+	$Timer.wait_time = waveData[wave_index].delay
 
 func play_wave(index : int):
 	for group in waveData[index].enemies:
 		for _enemy in group:
 			for i in group[_enemy]:
 				spawn_enemy()
-	await wait(waveData[index].delay)
+	#await wait(waveData[index].delay)
 
 func spawn_enemy():
 	var e = enemy.instantiate()

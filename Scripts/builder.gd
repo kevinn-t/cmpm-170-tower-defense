@@ -95,6 +95,7 @@ func populateBuildUI():
 		#buildingUIButtonParent.add_child(button)
 	for i in range(len(previews)):
 		var inst = get_node(previews[i])
+		inst.buildCost = gm.buildingInfo[inst.name].cost
 		var button : Button = get_node(buttons[i])
 		#print("BUTT: ", button, " INST: ", inst, " PATHS ", previews[i]," &&& ", buttons[i])
 		button.get_node("TextureRect").texture = inst.get_texture()

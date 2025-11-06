@@ -3,20 +3,20 @@
 	{
 		"enemies": [
 		{
-			"ship": 3,
-			"dart" : 0
-		}
-		],
-		"delay":5
-	},
-	{
-		"enemies": [
-		{
 			"ship": 2,
 			"dart" : 0
 		}
 		],
-		"delay":5
+		"delay":6
+	},
+	{
+		"enemies": [
+		{
+			"ship": 3,
+			"dart" : 0
+		}
+		],
+		"delay":6
 	}
   ]
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://daa10ieakewou"]
+[gd_scene load_steps=38 format=4 uid="uid://daa10ieakewou"]
 
 [ext_resource type="PackedScene" uid="uid://xuoh0gxe3ly5" path="res://Prefabs/city_center.tscn" id="1_0afw7"]
 [ext_resource type="PackedScene" uid="uid://digijb3eflvbs" path="res://Prefabs/drill.tscn" id="2_ux2rm"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" uid="uid://dcfh5kofkok3d" path="res://Scripts/enemy_spawner.gd" id="15_v7vy4"]
 [ext_resource type="PackedScene" uid="uid://dml41df75scnh" path="res://Prefabs/ship_depot.tscn" id="17_xn55d"]
 [ext_resource type="Texture2D" uid="uid://ckhyprueg88jg" path="res://Art/enemy_flag.png" id="18_lslek"]
+[ext_resource type="Script" uid="uid://dgraq5sot6cil" path="res://enemy_warning_label.gd" id="19_xn55d"]
+[ext_resource type="Script" uid="uid://cfi4p0c05xtit" path="res://directions_stopwatch.gd" id="20_tfagm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_neqfu"]
 vertices = PackedVector2Array(773.9219, -598.25, 766.0703, 502, -734.2031, 502, -757.78125, -637.71875)
@@ -239,12 +241,37 @@ text = "Repair Depot"
 [node name="TextureRect" parent="UI/VBoxContainer/FoldableContainer/VBoxContainer/Repair" index="2"]
 texture = SubResource("AtlasTexture_ipocw")
 
+[node name="Enemy Warning Label" type="Label" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_bottom = 101.0
+grow_horizontal = 0
+script = ExtResource("19_xn55d")
+
+[node name="Directions" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.5
+offset_right = 104.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Survive as Long as You Can"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("20_tfagm")
+
+[node name="Timer" type="Timer" parent="UI"]
+autostart = true
+
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(227, 88)
 script = ExtResource("15_v7vy4")
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]
-wait_time = 10.0
+wait_time = 30.0
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemySpawner"]

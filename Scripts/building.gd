@@ -9,11 +9,11 @@ extends StaticBody2D
 @onready var _gm = $"../../"
 
 # nw = +x & se = -x
-# ne = -y & sw = +y 
+# ne = -y & sw = +y
 func grid_pos()->Vector2:
 	var pos = Vector2()
-	pos.x = global_position.x/32 + global_position.y/16
-	pos.y = global_position.x/-32 + global_position.y/16
+	pos.x = round(global_position.x/32 + global_position.y/16)
+	pos.y = round(global_position.x/-32 + global_position.y/16)
 	return pos
 
 func get_neighbors()->Array[Building]:
@@ -99,6 +99,7 @@ func _ready() -> void:
 	make_hp_bar()
 	make_storage_ui()
 	_gm.all_buildings[grid_pos()] = self
+	#print("added " + str(self) + " at " + str(grid_pos()))
 
 const EXPLOSION = preload("res://Prefabs/explosion.tscn")
 func explosion(explosion_iterations : int = 2, explosion_chance : float = 0.2, explosion_radius : float = 20):
