@@ -5,12 +5,6 @@ extends Building
 var index : int = 0
 @onready var gm = $"../.."
 
-func _ready() -> void:
-	onBuilt.connect(on_built)
-
-func on_built()->void:
-	gm.all_buildings[grid_pos()] = self
-
 # TODO make it so that smoke emission rate is determined by whether or not ore has been generated,
 # if inactive show inactive sprite, else show normal sprite
 

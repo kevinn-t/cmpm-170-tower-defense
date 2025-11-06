@@ -13,7 +13,6 @@ func on_built():
 	$"../../Units".add_child(my_ship)
 	my_ship.global_position = global_position
 	my_ship.home = self
-	gm.all_buildings[grid_pos()] = self
 
 func _process(_delta: float) -> void:
 	if my_ship != null:

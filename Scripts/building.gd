@@ -98,6 +98,7 @@ func _ready() -> void:
 	onHit.connect(explosion)
 	make_hp_bar()
 	make_storage_ui()
+	_gm.all_buildings[grid_pos()] = self
 
 const EXPLOSION = preload("res://Prefabs/explosion.tscn")
 func explosion(explosion_iterations : int = 2, explosion_chance : float = 0.2, explosion_radius : float = 20):

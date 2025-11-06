@@ -1,22 +1,22 @@
 {
 	"waves": [
 	{
-        "enemies": [
-        {
-            "ship": 5,
-            "dart" : 0
-        }
-        ],
-	    "delay":2
+		"enemies": [
+		{
+			"ship": 3,
+			"dart" : 0
+		}
+		],
+		"delay":5
 	},
 	{
-        "enemies": [
-        {
-            "ship": 2,
-            "dart" : 0
-        }
-        ],
-	    "delay":1
+		"enemies": [
+		{
+			"ship": 2,
+			"dart" : 0
+		}
+		],
+		"delay":5
 	}
   ]
 }

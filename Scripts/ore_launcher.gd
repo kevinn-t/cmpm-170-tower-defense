@@ -4,12 +4,6 @@ extends Building
 @onready var shipment_cooldown : Timer = $Timer
 @onready var gm = $"../.."
 
-func _ready() -> void:
-	onBuilt.connect(on_built)
-
-func on_built()->void:
-	gm.all_buildings[grid_pos()] = self
-
 func _on_delivery() -> void:
 	try_launch()
 		

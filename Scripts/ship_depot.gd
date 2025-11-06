@@ -21,7 +21,6 @@ func on_built():
 	$"../../Units".add_child(my_ship)
 	my_ship.global_position = global_position
 	my_ship.home = self
-	gm.all_buildings[grid_pos()] = self
 	#$GUI.visible = true
 	#selecting = true
 
