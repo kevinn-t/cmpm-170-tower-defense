@@ -76,3 +76,10 @@ func fireSFX():
 	var DIE = func die():
 		inst.queue_free()
 	inst.finished.connect(DIE)
+	
+@onready var engine_sound: AudioStreamPlayer2D = $EngineSound
+func setEngineSFX():
+	if velocity.length() > 0.2 && !engine_sound.playing:
+		engine_sound.play()
+	elif velocity.length() < 0.2 && engine_sound.playing:
+		engine_sound.stop()

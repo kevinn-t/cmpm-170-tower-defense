@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcc2hse3nq2h5"]
+[gd_scene load_steps=8 format=3 uid="uid://bcc2hse3nq2h5"]
 
 [ext_resource type="Script" uid="uid://1iii38tge1yt" path="res://Scripts/repair_ship.gd" id="1_opdoe"]
 [ext_resource type="Texture2D" uid="uid://dr2ko05fgqpsa" path="res://Art/repair_ship.png" id="2_opdoe"]
 [ext_resource type="Script" uid="uid://g2h5vmi5xsd2" path="res://Scripts/trail2D.gd" id="3_p8w87"]
+[ext_resource type="AudioStream" uid="uid://do6yuwai43qt8" path="res://Sounds/engine.mp3" id="4_dnqfb"]
 
 [sub_resource type="Gradient" id="Gradient_ba1si"]
 colors = PackedColorArray(0.72156864, 0.8392157, 0.91764706, 1, 0.72156864, 0.8392157, 0.91764706, 0)
@@ -96,6 +97,12 @@ horizontal_alignment = 1
 points = PackedVector2Array(0, 0, 40, 0)
 width = 4.0
 default_color = Color(0.87058824, 0.80784315, 0.5411765, 1)
+
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dnqfb")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

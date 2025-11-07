@@ -85,6 +85,7 @@ func _physics_process(_delta: float) -> void:
 			var dir = (target.global_position - global_position).normalized()
 			rotation = lerp_angle(rotation, atan2(dir.y, dir.x), turn_speed * _delta)
 	super(_delta)
+	setEngineSFX()
 	
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:

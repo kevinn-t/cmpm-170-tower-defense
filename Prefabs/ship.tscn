@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://jivqusd7xwo1"]
+[gd_scene load_steps=8 format=3 uid="uid://jivqusd7xwo1"]
 
 [ext_resource type="Script" uid="uid://014u54bmi76o" path="res://Scripts/transport_ship.gd" id="1_88h6h"]
 [ext_resource type="Texture2D" uid="uid://r1wyym74q2hw" path="res://Art/ship.png" id="2_88h6h"]
 [ext_resource type="Script" uid="uid://g2h5vmi5xsd2" path="res://Scripts/trail2D.gd" id="3_ba1si"]
+[ext_resource type="AudioStream" uid="uid://do6yuwai43qt8" path="res://Sounds/engine.mp3" id="4_cm1ru"]
 
 [sub_resource type="Gradient" id="Gradient_ba1si"]
 colors = PackedColorArray(0.72156864, 0.8392157, 0.91764706, 1, 0.72156864, 0.8392157, 0.91764706, 0)
@@ -71,6 +72,12 @@ grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 text = "Returning Home"
 horizontal_alignment = 1
+
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cm1ru")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

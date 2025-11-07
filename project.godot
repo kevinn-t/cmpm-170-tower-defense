@@ -17,6 +17,10 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
 config/icon="uid://7e682tasnehe"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/senti/Logan/Github/cmpm-170-tower-defense/Recordings/movie.avi"
+
 [global_group]
 
 ship_depot=""

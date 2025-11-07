@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbjsdcb8gin4k"]
+[gd_scene load_steps=8 format=3 uid="uid://dbjsdcb8gin4k"]
 
 [ext_resource type="Script" uid="uid://dvgnsjfekgaek" path="res://Scripts/enemy.gd" id="1_lgw76"]
 [ext_resource type="Texture2D" uid="uid://p1omitrd35t4" path="res://Art/enemy_ship.png" id="2_lgw76"]
 [ext_resource type="Script" uid="uid://g2h5vmi5xsd2" path="res://Scripts/trail2D.gd" id="3_30yes"]
 [ext_resource type="PackedScene" uid="uid://bv3jw0xt10wxi" path="res://Prefabs/gun.tscn" id="3_t4g6b"]
+[ext_resource type="AudioStream" uid="uid://do6yuwai43qt8" path="res://Sounds/engine.mp3" id="5_n7q57"]
 
 [sub_resource type="Gradient" id="Gradient_30yes"]
 colors = PackedColorArray(0.9529412, 0.49019608, 0.49019608, 1, 0.9529412, 0.49019608, 0.49019608, 0)
@@ -59,5 +60,11 @@ position = Vector2(-5, -9)
 
 [node name="Gun2" parent="." instance=ExtResource("3_t4g6b")]
 position = Vector2(-5, 9)
+
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_n7q57")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

@@ -4,3 +4,4 @@
 
 [node name="ShootSound" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_s1eco")
+volume_db = -20.0
